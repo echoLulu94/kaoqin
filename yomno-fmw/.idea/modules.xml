@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/yomno-fmw.iml" filepath="$PROJECT_DIR$/yomno-fmw.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../yomno-ykq/yomno-ykq.iml" filepath="$PROJECT_DIR$/../yomno-ykq/yomno-ykq.iml" />
+    </modules>
+  </component>
+</project>

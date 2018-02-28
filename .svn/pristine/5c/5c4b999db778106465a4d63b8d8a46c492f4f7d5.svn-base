@@ -1,0 +1,100 @@
+server.port=18888
+server.context-path=/sitcxse
+
+# \u5e94\u7528\u81ea\u5b9a\u4e49\u914d\u7f6e
+logging.config=classpath:logback-sit.xml
+
+extension.protocol=https
+extension.domain=www.hellorich.com
+extension.static.domain=www.hellorich.com
+extension.port=80
+#\u6d3b\u52a8\u62a5\u540d\u7cfb\u7edfcontentPath
+extension.contentPath=/sitcxse
+
+extension.msiteContentPath=/sitmsite
+extension.baseUrlKeyName=extensionBaseUrl
+extension.tokenName=CXS_EXT_TOKEN
+#\u5fae\u4fe1\u6388\u6743appId
+extension.authAppId=wx333549f8fded1fb9
+#\u5fae\u4fe1\u5206\u4eabappId
+extension.shareAppId=wxce35c15ef8875327
+#\u5141\u8bb8\u8de8\u57df\u7684\u57df\u540d\uff0c\u591a\u57df\u540d\u4ee5\u9017\u53f7\u5206\u5272\uff0c\u4f8b\u5982\uff1ahttp://172.16.36.66:8080,http://172.16.36.66:8080
+extension.allowOrigin=*
+#\u53d1\u9001\u77ed\u4fe1\u63a5\u53e3
+extension.sendMessageUrl=http://10.104.11.108:8080/admin/send/message
+#月刊链接
+extension.julUrl=http://cdn.hellorich.com${extension.msiteContentPath}/jul/index.html
+#刊物二维码文件名
+extension.journalQrCodeFileName=journal.png
+#\u9759\u6001\u8D44\u6E90\u76F8\u5BF9\u8DEF\u5F84
+extension.staticPath=/sitscres/
+#\u4e0a\u4f20\u9759\u6001\u8d44\u6e90\u6839URL\uff0c\u53ef\u6839\u636e\u5b9e\u9645\u60c5\u51b5\u4fee\u6539
+extension.staticBaseUrl=${extension.protocol}://${extension.static.domain}${extension.staticPath}
+#\u4e0a\u4f20\u9759\u6001\u8d44\u6e90\u6839\u8def\u5f84\uff0c\u53ef\u6839\u636e\u5b9e\u9645\u60c5\u51b5\u4fee\u6539
+extension.staticBasePath=/usr/src/ls/servers/nginx/html${extension.staticPath}
+
+#msite链接
+extension.msiteUrl=${extension.protocol}://${extension.static.domain}${extension.msiteContentPath}
+
+extension.vcet=1800000
+#\u6d3b\u52a8\u4e8c\u7ef4\u7801\u540d\u79f0
+extension.activityQrCodeFileName=activity.png
+#\u7b7e\u5230\u4e8c\u7ef4\u7801\u540d\u79f0
+extension.signQrCodeFileName=sign.png
+#logo\u6587\u4ef6\u8def\u5f84
+extension.logoFileName=${extension.staticBasePath}/logo/hellorich.png
+#\u4e8c\u7ef4\u7801\u76f8\u5bf9url
+extension.qrCodeUrl=${extension.staticBaseUrl}qrCode/
+#\u4e8c\u7ef4\u7801\u76f8\u5bf9\u8def\u5f84
+extension.qrCodePath=${extension.staticBasePath}qrCode/
+#\u5fae\u4fe1\u7b7e\u5230url
+extension.wechatSignUrl=https://www.hellorich.com${extension.msiteContentPath}/html/weChatSignUp.html
+#\u624b\u673a\u7b7e\u5230url
+extension.phoneSignUrl=https://www.hellorich.com${extension.msiteContentPath}/html/signIn.html
+
+#\u5916\u90e8\u9759\u6001\u8d44\u6e90\u8bbf\u95ee\u76f8\u5bf9\u8def\u5f84
+extension.staticRelativeUrl=${extension.staticPath}**
+#\u5916\u90e8\u9759\u6001\u8d44\u6e90\u8bbf\u95ee\u76ee\u5f55
+extension.staticLocation=file:${extension.staticBasePath}
+
+#js取每天开始时间,取的是北京时间(每天的8点整),北京时间与0点间隔时间(毫秒数)
+#extension.eightHours=28800000
+#js取每天开始时间,取的是北京时间(每天的8点整),北京时间与23:59:00间隔时间(毫秒数)
+#extension.sixteenHours=57540000
+
+#奇讯直播接口地址
+#extension.qixunLiveUrl=https://api.qixun.tv/v1/live/detail
+
+#\u9F50\u8BAF\u76F4\u64ADtoken
+#extension.qixunToken=a44874fe4d9df8c86d84d25d3cfe9d24
+
+#ueditor.confingFileName=ueditor/config.
+#文件系统地址
+#extension.cxsfsUrl=http://172.16.1.150:20889/sitcxsfs
+
+druid.url=jdbc:mysql://10.104.11.108:3306/cxse_sit
+druid.driver-class=com.mysql.jdbc.Driver
+druid.username=cxse_sit
+druid.password=cxse_sit
+
+
+# REDIS (RedisProperties)
+# Redis数据库索引（默认为0）
+spring.redis.database=0
+# Redis服务器地址
+spring.redis.host=172.16.1.140
+# Redis服务器连接端口
+spring.redis.port=6379
+# Redis服务器连接密码（默认为空）
+spring.redis.password=cxsredis13579
+# 连接池最大连接数（使用负值表示没有限制）
+spring.redis.pool.max-active=-1
+# 连接池最大阻塞等待时间（使用负值表示没有限制）
+spring.redis.pool.max-wait=-1
+# 连接池中的最大空闲连接
+spring.redis.pool.max-idle=100
+# 连接池中的最小空闲连接
+spring.redis.pool.min-idle=0
+# 连接超时时间（毫秒）
+spring.redis.timeout=100000
+

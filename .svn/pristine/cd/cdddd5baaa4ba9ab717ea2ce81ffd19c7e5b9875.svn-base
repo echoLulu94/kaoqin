@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglibs.jsp"%>
+
+<div class="header">
+	<div class="header-content">
+		<a href="${ctx}/" class="logo"><img src="${admin}/images/top_logo.png"> </a>
+		<nav>
+			<ul>
+				<li class=" pure-menu-selected">
+					<a href="index.html" class="nav-underline-active">首页</a>
+				</li>
+				<li ><a href="kewaikaoqinxinxi.html" class="nav-underline">信息管理</a></li>
+				<li ><a href="huodongkaoqin.html" class="nav-underline">统计管理</a></li>
+				<li ><a href="xuexiaomingcheng.html" class="nav-underline">系统设置</a></li>
+			</ul>
+		</nav>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+    $(function(){
+        $('nav>ul>li>a').on('click',function(){
+            $('nav>ul>li>a').attr('class','nav-underline');
+            $(this).attr('class','nav-underline-active');
+        });
+    });
+</script>
