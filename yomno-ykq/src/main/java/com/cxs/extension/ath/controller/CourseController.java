@@ -30,7 +30,7 @@ public class CourseController {
     @RequestMapping("findCourseList")
     @ResponseBody
     @NoAuth
-    public ResultDo<Map<String, Object>> findCourseList() {
+    public ResultDo<Map<String, Object>> findCourseList(String classId, Long startTime, Long endTime) {
 
 
 
