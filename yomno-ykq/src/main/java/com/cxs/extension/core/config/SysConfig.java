@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
  *
  * @ClassName: AdminConfiguration
  * @Description: 后台管理系统配置文件类
- * @author: ryan.guo
- * @email: chinazan@qq.com
+ * @author: huimin.wu
+ * @email: huimin.wu@iyomoo.com
  * @date: 2017年3月7日 下午4:17:38
  *
  */

@@ -33,8 +33,8 @@ import tk.mybatis.mapper.entity.Example;
  * 
  * @Description: 用户业务处理实现类
  * @ClassName: UserServiceImpl 
- * @author: ryan.guo   
- * @email: chinazan@qq.com
+ * @author: huimin.wu
+ * @email: huimin.wu@iyomoo.com
  * @date: 2017年5月21日 
  *
  */

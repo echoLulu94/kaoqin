@@ -7,9 +7,9 @@ import java.util.Map;
  * 
  * @ClassName: ResultDo 
  * @Description: 服务返回对象
- * @author: ryan.guo   
- * @email: chinazan@qq.com
- * @date: 2017年3月2日 下午3:58:43 
+ * @author: huimin.wu
+ * @email: huimin.wu@iyomoo.com
+ * @date: 2018年01月28日 下午3:58:43
  * 
  * @param <T> 数据对象
  */
@@ -28,7 +28,7 @@ public class ResultDo<T> implements Serializable{
 	 * 例如：登录接口的登录成功响应	
 	 * 			resultCode： ATH121611	
 	 * 				子系统编号：ATH
-	 * 				模块编号：12	
+	 * 				模块编号：12
 	 * 				功能编号：16
 	 * 				功能编号：11
 	 */

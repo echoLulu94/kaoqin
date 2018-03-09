@@ -11,9 +11,9 @@ import com.cxs.framework.dto.ResultDo;
  * 
  * @Description: 用户业务处理接口定义
  * @ClassName: UserService 
- * @author: ryan.guo   
- * @email: chinazan@qq.com
- * @date: 2017年5月21日 
+ * @author: huimin.wu
+ * @email: huimin.wu@iyomoo.com
+ * @date: 2018年1月21日
  *
  */
 public interface UserService {

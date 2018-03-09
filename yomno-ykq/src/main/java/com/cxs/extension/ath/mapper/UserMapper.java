@@ -14,7 +14,7 @@ import com.cxs.extension.core.utils.CoreMapper;
  * @Description: 用户数据库操作封装类
  * @ClassName: UserMapper 
  * @author: huimin.wu
- * @email: chinazan@qq.com
+ * @email: huimin.wu@iyomoo.com
  * @date: 2017年5月21日 
  *
  */

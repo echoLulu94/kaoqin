@@ -5,8 +5,8 @@ import java.io.Serializable;
 
 /**
  *
- * @Description: 班级表实体类
- * @ClassName: User
+ * @Description: 标语实体类
+ * @ClassName: Banner
  * @author: huimin.wu
  * @email: huimin.wu@iyomoo.com
  * @date: 2018年02月06日
