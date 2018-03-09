@@ -25,7 +25,23 @@ public interface UserService {
 	 * @return
 	 */
 	UserDto findByPhone(String phone);
-    
+
+
+	/**
+	 * 根据学号查用户信息
+	 * @param id 学号
+	 * @return
+	 */
+	UserDto findOneById(String id);
+
+
+	/**
+	 * 修改联系方式
+	 * @param userDto
+	 * @param formerPhone
+	 * @return
+	 */
+	ResultDo<UserDto>  resetPhone(UserDto userDto );
     /**
      * 保存用户
      * @param userDto 需保存用户数据对象
@@ -68,7 +84,10 @@ public interface UserService {
      * @return
      */
     ResultDo<UserDto> findUserById(String id);
-    
+
+
+
+
     /**
      * 分页查询用户信息
      * @return

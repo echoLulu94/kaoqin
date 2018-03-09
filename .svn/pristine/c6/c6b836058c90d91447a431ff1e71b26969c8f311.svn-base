@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/layout/">
+	<excludes>
+		<pattern>/static/*</pattern>
+		<pattern>/cet/login*</pattern>
+        <pattern>/unauthorized</pattern>
+        <pattern>/admin*</pattern>
+        <pattern>/*_sub*</pattern>
+        <pattern>/notice/*</pattern>
+        <pattern>/link</pattern>
+        <pattern>/calendarPage/*</pattern>
+        <pattern>/otherLogin/*</pattern>
+		<pattern>/index/*</pattern>
+        
+	</excludes>
+
+    <decorator name="portal_defalut" page="portal/defalut/layout.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>

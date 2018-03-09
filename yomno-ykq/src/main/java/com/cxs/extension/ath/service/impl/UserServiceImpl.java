@@ -17,7 +17,7 @@ import com.cxs.extension.ath.service.api.UserService;
 import com.cxs.extension.ath.utils.UserParseUtil;
 import com.cxs.extension.core.utils.CharacterUtil;
 import com.cxs.extension.core.utils.MessageDigestUtil;
-import com.cxs.extension.core.utils.RedisUtil;
+//import com.cxs.extension.core.utils.RedisUtil;
 import com.cxs.extension.sys.service.api.DictItemService;
 import com.cxs.framework.dto.PageDto;
 import com.cxs.framework.dto.ResultDo;
@@ -209,6 +209,19 @@ public class UserServiceImpl implements UserService {
 		resultDo.setResultData(userDto);
 		return resultDo;
     }
+	@Override
+	public UserDto findOneById(String id) {
+
+		UserDto userDto=new UserDto();
+		if(id!=null&&"".equals(id)){
+			User  userTmp=this.userMapper.findOneById(id);
+			if(null!=userTmp){
+				UserParseUtil.parseToDto(userTmp,userDto);
+			}
+		}
+		return userDto;
+	}
+
 
 	@Override
 	public ResultDo<PageDto<UserDto>> findUser(PageDto<UserDto> pageDto) {
@@ -281,17 +294,38 @@ public class UserServiceImpl implements UserService {
 			return null;
 		}
 	}
+
+	/*重置联系方式*/
+	@Override
+	public ResultDo<UserDto> resetPhone(UserDto userDto) {
+		ResultDo<UserDto> resultDo = new ResultDo<UserDto>();
+		try{
+			//查询该（手机号）用户对应的密钥。
+			/*User userTmp = new User();
+			userTmp.setId(userDto.getId());*/
+			userMapper.updateToPhone(userDto.getPhone(), userDto.getId());
+			if(userDto.getId()==null||userDto.getPhone()==null){
+				resultDo.setResultDo(UserResult.UPDATE_BY_NOT_NULL);
+				logger.info(InterfaceResult.FIND_FAILURE.getValue());
+			}else{
+				resultDo.setResultDo(InterfaceResult.SUCCESS);
+				logger.info(InterfaceResult.SUCCESS.getValue());
+			}
+		}catch (Exception e) {
+			resultDo.setResultDo(UserResult.UPDATE_FAILURE);
+			logger.error(UserResult.UPDATE_FAILURE.getValue(), e);
+		}
+		resultDo.setResultData(userDto);
+		return  resultDo;
+	}
+
+
 	/*重置密码，设为字典固定值 ，未使用*/
 	@Override
 	public ResultDo<UserDto> resetPwd(UserDto userDto) {
 		ResultDo<UserDto> resultDo = new ResultDo<UserDto>();
 		try{
-			//查询该（手机号）用户对应的密钥。
-			User userTmp = new User();
-			userTmp.setPhone(userDto.getPhone());
-			User user = this.userMapper.selectOne(userTmp);
-			String pwd = RedisUtil.getInstance().getStr("SYS_CONF-RESET_PWD").trim();
-			userDto.setPwd(MessageDigestUtil.hmacsha512(pwd, user.getSalt()));
+
 			userMapper.updateToPwd(userDto.getPwd(), userDto.getId());
 			resultDo.setResultDo(InterfaceResult.SUCCESS);
 			logger.info(InterfaceResult.SUCCESS.getValue());

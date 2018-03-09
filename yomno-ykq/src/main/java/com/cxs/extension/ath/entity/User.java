@@ -99,9 +99,7 @@ public class User implements Serializable{
 	/**最后修改时间*/
 	@Column(name ="update_time",nullable=true)
 	private Long updateTime;
-	
-	
-	
+
 	/**
 	 *方法: 取得id
 	 *@return: String  id

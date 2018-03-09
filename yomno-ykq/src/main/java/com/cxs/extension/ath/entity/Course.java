@@ -21,13 +21,17 @@ public class Course  implements Serializable {
     @Id
     @Column(name ="id",nullable=false)
     private String id;
-    /**班级名称*/
-    @Column(name ="course_name",nullable=false)
-    private String courseName;
+    /**班级id*/
+    @ManyToOne
+    @JoinColumn(name = "class_id" ,referencedColumnName = "id" ,nullable = false)
+    private Classes classes;
     /**用户id*/
     @ManyToOne
     @JoinColumn(name = "user_id" ,referencedColumnName = "id" ,nullable = false)
     private User user;
+    /**班级名称*/
+    @Column(name ="course_name",nullable=false)
+    private String courseName;
     /**课程时间*/
     @Column(name="course_time",nullable = false)
     private Long courseTime;
@@ -37,6 +41,10 @@ public class Course  implements Serializable {
     /**课程地点*/
     @Column(name="course_location",nullable = false)
     private String courseLocation;
+    /**考勤id*/
+    @ManyToOne
+    @JoinColumn(name = "record_id" ,referencedColumnName = "id" ,nullable = false)
+    private Record record;
     /**创建者ID*/
     @Column(name ="create_by",nullable=true)
     private String createBy;
@@ -50,20 +58,12 @@ public class Course  implements Serializable {
     @Column(name ="update_time",nullable=true)
     private Long updateTime;
 
-    public String getId() {
-        return id;
+    public Classes getClasses() {
+        return classes;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setClasses(Classes classes) {
+        this.classes = classes;
     }
 
     public User getUser() {
@@ -72,6 +72,14 @@ public class Course  implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public Long getCourseTime() {
@@ -96,6 +104,14 @@ public class Course  implements Serializable {
 
     public void setCourseLocation(String courseLocation) {
         this.courseLocation = courseLocation;
+    }
+
+    public Record getRecord() {
+        return record;
+    }
+
+    public void setRecord(Record record) {
+        this.record = record;
     }
 
     public String getCreateBy() {

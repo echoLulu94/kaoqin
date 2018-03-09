@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `ath_user` (
 DELETE FROM `ath_user`;
 /*!40000 ALTER TABLE `ath_user` DISABLE KEYS */;
 INSERT INTO `ath_user` (`id`, `code`, `nick_name`, `en_name`, `real_name`, `sex`, `idcard`, `birthday`, `head_img_url`, `user_type`, `pwd`, `phone`, `init_pwd`, `email`, `salt`, `locked`, `login_fail_count`, `register_time`, `login_time`, `login_channel`, `login_device_id`, `login_ip`, `create_by`, `create_time`, `update_by`, `update_time`) VALUES
-	('5b8298a36f6649579a0eaea2177d342d', '', '吴', 'wuhuimin', '吴慧敏', '0', '', '', '', '10', '1300e002e5795bf2740d0ef6b8c87bd418efe97bf45f4237f1c98f1ee040d424a01620c30895e975a708d6c930e2bf82da95f8fdbce571fb711955927d485e58', '18817934309', '163160', '', 'nN4HPdRAEmlvlXuAmw5FEuToSb0TF7pN7gJOmylNWLenSWFzvLuAganVNLXRzyHFbkoJ2onSrzMgHbQ4gkaVc1UkjdQObXTsYQHJlY5ckazaBvf2NWJQFeJDmVfOWLML0y6yoee69p31Sq7F9hVSFfYTAEhySA8P9S6wL6PE8tcThQfaDmdRwTJ1R77DyuadkIwPmleFjrHXk7mMkQg3WiCnoItj6oBoXciXi82xci5Qk5Trq46avgGSOIwPhBJW', '0', 0, NULL, 1508833668058, '', '', '', '', 1495700678684, '', 1512107097235),
-	('b0d739b53532481da8230fbd4cafd77d', '', '', '', '张三', '', '', '', '', '10', 'ac72b28cd55200affa71e895c681f67b64666ef814384ac3a991bc38c7f5cc630c3860fce3417267860d59f65c23ab677bc8b1e72dd71d453aba7b5f202c30be', '18616673038', NULL, '', '5BXDkGHW1CB442DrUeLHd7clnjcutK2h1Rndt4tP4BslnJAsjz9OPDLEWHoTEo5BzgbRnlCMpByVHC88yTgC5TP1uuzxxcCdiTXbmNJ1wjTzZiT59H4Rv40nRh6ccgfGg1DEykjkeIagdkntJZS1WpTUIv6sdRta6lqudOwCAnrUPFkda6KPhWWkwVGL3szSguMcf0TFxCwxuWUlX2BuZSkIrC7VSZnvGy0E2iNYqM6UsuidTRhZfAs2Ds334Dye', '0', NULL, 1509425368346, NULL, NULL, NULL, NULL, NULL, 1509425368346, NULL, 1509425385070);
+	('5b8298a36f6649579a0eaea2177d342d', '', 'wu', 'wuhuimin', '吴慧敏', '0', '', '', '', '10', '31e18ac1663d0130d2a91d481bd245f20b81830207b6d72b3613abb5b480c4a78befc6198272a999e0f7464d516d50e51127f703d191c0fbee5be739795bee69', '18817934309', '163160', '', 'nN4HPdRAEmlvlXuAmw5FEuToSb0TF7pN7gJOmylNWLenSWFzvLuAganVNLXRzyHFbkoJ2onSrzMgHbQ4gkaVc1UkjdQObXTsYQHJlY5ckazaBvf2NWJQFeJDmVfOWLML0y6yoee69p31Sq7F9hVSFfYTAEhySA8P9S6wL6PE8tcThQfaDmdRwTJ1R77DyuadkIwPmleFjrHXk7mMkQg3WiCnoItj6oBoXciXi82xci5Qk5Trq46avgGSOIwPhBJW', '0', 0, NULL, 1508833668058, '', '', '', '', 1495700678684, '', 1512107097235),
+	('b0d739b53532481da8230fbd4cafd77d', '', 'echo', '', '张三', '', '', '', '', '10', 'ac72b28cd55200affa71e895c681f67b64666ef814384ac3a991bc38c7f5cc630c3860fce3417267860d59f65c23ab677bc8b1e72dd71d453aba7b5f202c30be', '18616673038', NULL, '', '5BXDkGHW1CB442DrUeLHd7clnjcutK2h1Rndt4tP4BslnJAsjz9OPDLEWHoTEo5BzgbRnlCMpByVHC88yTgC5TP1uuzxxcCdiTXbmNJ1wjTzZiT59H4Rv40nRh6ccgfGg1DEykjkeIagdkntJZS1WpTUIv6sdRta6lqudOwCAnrUPFkda6KPhWWkwVGL3szSguMcf0TFxCwxuWUlX2BuZSkIrC7VSZnvGy0E2iNYqM6UsuidTRhZfAs2Ds334Dye', '0', NULL, 1509425368346, NULL, NULL, NULL, NULL, NULL, 1509425368346, NULL, 1509425385070);
 /*!40000 ALTER TABLE `ath_user` ENABLE KEYS */;
 
 -- 导出  表 yomno_dev.sys_dict_item 结构
@@ -74,10 +74,15 @@ CREATE TABLE IF NOT EXISTS `sys_dict_item` (
 DELETE FROM `sys_dict_item`;
 /*!40000 ALTER TABLE `sys_dict_item` DISABLE KEYS */;
 INSERT INTO `sys_dict_item` (`id`, `type_code`, `type_name`, `item_code`, `item_value`, `item_name`, `state`, `scort`, `item_des`, `create_time`, `create_by`, `update_time`, `update_by`) VALUES
+	('00e8b9ea7ece41f493dafb5428791bf2', 'RECORD_STATUS', '考勤状态', 'STATUS', '10', '准点', '1', 1, '', 1501480617291, NULL, 1508833593777, NULL),
+	('00e8b9ea7ece41f493dafb5428793bf2', 'RECORD_STATUS', '考勤状态', 'STATUS', '11', '迟到', '1', 2, '', 1501480617291, NULL, 1508833593777, NULL),
+	('00e8b9ea7ece41f493dafb5428794bf2', 'RECORD_STATUS', '考勤状态', 'STATUS', '12', '早退', '1', 3, '', 1501480617291, NULL, 1508833593777, NULL),
+	('00e8b9ea7ece41f493dafb5428796bf2', 'RECORD_STATUS', '考勤状态', 'STATUS', '13', '请假', '1', 4, '', 1501480617291, NULL, 1508833593777, NULL),
 	('00e8b9ea7ece41f493dafb5428792bf2', 'MEET_AREA', '会场区域', 'AAREA', '10', '杭州来宾区', '1', 1, '', 1501480617291, NULL, 1508833593777, NULL),
 	('0265e8623c4b4be3a5a561ef3b1cab34', 'USER_TYPE', '用户类型', 'OPERPER', '11', '运营人员', '1', 2, NULL, 1503281370897, NULL, 1503281370897, NULL),
 	('0a8d2923c0a44251b8eb31ec13ba50cb', 'TOPIC_MEDIA_TYPE', '资讯归属类型', 'OUTSIDE', '0', '外部', '1', 2, '', 1504076484653, NULL, 1508837426884, NULL),
 	('0c641ed775d74df79224d12025001bf1', 'FILE_TYPE', '文件类型', 'PDF', '13', 'pdf', '1', 4, NULL, NULL, NULL, NULL, NULL),
+	('00e8b9ea7ece41f493dafb2428796bf2', 'RECORD_STATUS', '考勤状态', 'STATUS', '14', '缺勤', '1', 4, '', 1501480617291, NULL, 1508833593777, NULL),
 	('0c7a33c687f8414780d391848f2472b8', 'RESC_IMP', '功能导入', 'RESC_START_SHEET', '1', '资源表格开始页', '1', 7, NULL, 1505984730467, NULL, 1505984730467, NULL),
 	('0f4274a2a7614e91b0f1a56d170f982c', 'PLAY_FLAG', '播放标志', 'UNPLAY', '0', '不播放', '1', 1, NULL, 1505810452165, NULL, 1505810452165, NULL),
 	('107231b4dd2046938f40435dd19b2411', 'RESC_IMP', '功能导入', 'MOD_START_SHEET', '1', '模块表格开始页', '1', 4, '', 1505984476783, NULL, 1505984754568, NULL),
@@ -407,7 +412,7 @@ INSERT INTO `sys_media` (`id`, `file_type`, `path_flag`, `uploader`, `uploader_t
 	('07d84383da6e45c193a4ecd97f04db4d', '13', NULL, NULL, NULL, NULL, NULL, '/scres/jul/', '6d95573446b34f518a59ff714aada1f4.pdf', 1507606922064, NULL),
 	('07e48ffc28fc4ae392b3448723e7ee39', '13', NULL, NULL, NULL, NULL, NULL, '/scres/jul/', '475453e72e9f42e88993dd8c52725a2b.pdf', 1506759118048, NULL),
 	('07e75ff6d14f448b89d488a84812d2d2', '10', NULL, NULL, NULL, NULL, NULL, '/upload/', '71898835de9e4868a43fb32abb9b2207.jpg', 1504752846252, NULL),
-	('07e9b4849b7b493090e66cdf3d9d13b7', '10', NULL, NULL, NULL, NULL, NULL, '/upload/', 'c5d22d8e20a740e7a0a792825f434008.jpg', 1506046071512, NULL),
+	('07e9b4849b7b493090e66cdf3d9d13b7', '10', NULL, NULL, NULL, NULL, NULLƒ, '/upload/', 'c5d22d8e20a740e7a0a792825f434008.jpg', 1506046071512, NULL),
 	('07fab4acb46f418688620a791d26927c', '10', NULL, NULL, NULL, NULL, NULL, '/upload/extension/', 'cdce104253cc4ee3b62035e0d7b5d233.jpg', 1503456341127, NULL),
 	('08027feac1ac408b8d16f825afd4a328', '13', NULL, NULL, NULL, NULL, NULL, '/scres/jul/', '5efe8c6974b144758f38e3352f8a697f.pdf', 1506570544966, NULL),
 	('081c475e1e31466a9267efb7c0b28bdf', '13', NULL, NULL, NULL, NULL, NULL, '/scres/jul/', '9fdeb31d38b14a4c934ed94f0ebd00b6.pdf', 1507622295855, NULL),
@@ -2362,11 +2367,13 @@ DELETE FROM `ath_class`;
 DROP TABLE IF EXISTS `ath_course`;
 CREATE TABLE IF NOT EXISTS `ath_course` (
    `id` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '课程id',
-  `course_name` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '班级名称',
-  `user_id` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户id',
-  `course_time`  bigint(20) DEFAULT NULL COMMENT '创建时间',
-  `course_order` int DEFAULT  NULL COMMENT '课程节次',
-  `course_location` varchar(50)  DEFAULT NULL COMMENT '课程地点',
+  `class_id` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '班级名称',
+  `user_id` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户id：学生对应学号，教师对应工号',
+  `course_name` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '课程名称',
+  `course_time`  bigint(20) DEFAULT NULL COMMENT '课程时间',
+  `course_order` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '课程节次',
+  `course_location` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '课程地点',
+  `record_id` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '考勤id',
   `create_by` varchar(40) DEFAULT NULL COMMENT '创建人',
   `create_time` bigint(20) DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(40) DEFAULT NULL COMMENT '修改人',
@@ -2376,14 +2383,19 @@ CREATE TABLE IF NOT EXISTS `ath_course` (
 
 -- 正在导出表  yomno_dev.ath_course 的数据：~0 rows (大约)
 DELETE FROM `ath_course`;
-/*!40000 ALTER TABLE `ath_course` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ath_course` ENABLE KEYS */;
+INSERT INTO `ath_course` (`id`,`class_id`,`user_id`,`course_name`,`course_time`,`course_order`,`course_location`,`record_id`,`create_by`,`create_time`,`update_by`,`update_time`)  VALUES
+	('08bf7e7e8e2a48938a60ffc8dbf8a100','0508201','010810123','英语',20170910,'1-2','第一教室301','r001',NULL,NULL ,NULL,NULL),
+	('08bf7e7e8e2a48938a60ffc8dbf8a500','0508202','010810124','自动化',20170910,'3-4','第一教室302','r002',NULL,NULL ,NULL,NULL),
+	('08bf7e7e8e2a48938a60ffc8dbf8a300','0508201','010810125','计算机',20170910,'1-2','第一教室304','r001',NULL,NULL ,NULL,NULL);
+
+
 
 -- 导出  表 yomno_dev.ath_record 结构
 DROP TABLE IF EXISTS `ath_record`;
-CREATE TABLE IF NOT EXISTS `ath__record` (
+CREATE TABLE IF NOT EXISTS `ath_record` (
   `id` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '打卡记录id',
   `record_type` varchar(2) COLLATE utf8_bin DEFAULT NULL COMMENT '记录类型：10-课堂考勤；11-活动考勤' ,
+  `record_status` varchar(2) COLLATE utf8_bin DEFAULT NULL COMMENT '考勤状态：10-准点；11-迟到；12-早退；13-请假；14-缺勤' ,
   `record_time` bigint(20) DEFAULT NULL COMMENT '记录时间',
   `create_by` varchar(40) DEFAULT NULL COMMENT '创建人',
   `create_time` bigint(20) DEFAULT NULL COMMENT '创建时间',
@@ -2391,12 +2403,16 @@ CREATE TABLE IF NOT EXISTS `ath__record` (
   `update_time` bigint(20) DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
+DELETE FROM `ath_record`;
+INSERT INTO `ath_record` VALUES ('r001', '10', '10', '20180101', null, null, null, null);
+INSERT INTO `ath_record` VALUES ('r002', '10', '12', '20180102', null, null, null, null);
+INSERT INTO `ath_record` VALUES ('r003', '11', '10', '20180308', null, null, null, null);
+INSERT INTO `ath_record` VALUES ('r004', '10', '11', '20180309', null, null, null, null);
+INSERT INTO `ath_record` VALUES ('r005', '10', '13', '20180309', null, null, null, null);
 
 -- 导出  表 yomno_dev.ath_role 结构
 DROP TABLE IF EXISTS `ath_role`;
-CREATE TABLE `ath_role` (
+CREATE TABLE `ath_role`(
 	`id` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'id',
 	`code` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '角色编码',
 	`name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '角色名称',
@@ -2414,9 +2430,7 @@ DELETE FROM `ath_role`;
 /*!40000 ALTER TABLE `ath_role` DISABLE KEYS */;
 /*!40000 ALTER TABLE `ath_role` ENABLE KEYS */;
 
- ----------------------------
--- Table structure for `ath_role_resc`
--- ----------------------------
+
 DROP TABLE IF EXISTS `ath_role_resc`;
 CREATE TABLE `ath_role_resc` (
   `id` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'id',

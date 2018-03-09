@@ -82,17 +82,17 @@ public class AuthInterceptor implements HandlerInterceptor {
 			Token token = Token.readTokenFromCookie(sysConfig.getTokenName(),request.getCookies());
 			// 判断Cookie是否有令牌
 			if (null != token) {
-				if(StringUtil.isEmpty(token.getPhone())){
+				if(StringUtil.isEmpty(token.getId())){
 					// token无效
 					resultDo.setResultDo(UserResult.LOGIN_TOKEN_PHONE_IS_NULL);
-					logger.info(UserResult.LOGIN_TOKEN_PHONE_IS_NULL.getValue()+"手机号码:["+token.getPhone()+"]");
+					logger.info(UserResult.LOGIN_TOKEN_PHONE_IS_NULL.getValue()+"用户学号:["+token.getId()+"]");
 				}else{
-					UserDto userDto = userService.findByPhone(token.getPhone());
+					UserDto userDto = userService.findByPhone(token.getId());
 					if(null!=userDto){
 						request.setAttribute("userId", userDto.getId());
 						logger.debug("登录用户的id:["+userDto.getId()+"]");
 						String salt = userDto.getSalt();
-						logger.debug("令牌中的登陆手机号:["+token.getPhone()+"]");
+						logger.debug("令牌中的登陆用户名:["+token.getId()+"]");
 						// 验证token是否有效
 						if(Token.isTokenLegal(token, salt)){
 							// token有效
@@ -100,12 +100,12 @@ public class AuthInterceptor implements HandlerInterceptor {
 						}else{
 							// token无效
 							resultDo.setResultDo(UserResult.LOGIN_TOKEN_ERROR);
-							logger.info(UserResult.LOGIN_TOKEN_ERROR.getValue()+"手机号码:["+token.getPhone()+"]");
+							logger.info(UserResult.LOGIN_TOKEN_ERROR.getValue()+"用户名:["+token.getId()+"]");
 						}
 					}else{
 						// token无效
 						resultDo.setResultDo(UserResult.LOGIN_TOKEN_ERROR);
-						logger.info(UserResult.LOGIN_TOKEN_ERROR.getValue()+"手机号码:["+token.getPhone()+"]");
+						logger.info(UserResult.LOGIN_TOKEN_ERROR.getValue()+"用户名:["+token.getId()+"]");
 					}
 				}
 			} else {

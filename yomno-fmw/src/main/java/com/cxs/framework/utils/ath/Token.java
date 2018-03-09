@@ -38,11 +38,11 @@ public final class Token {
 	 * 校验码
 	 */
 	private String hash;
-	
+
 	/**
 	 * 登录名
 	 */
-	private String phone;
+	//private String phone;
 
 	/**
 	 * 微信unionid
@@ -50,7 +50,7 @@ public final class Token {
 	private String unionid;
 
 	/**
-	 * 微信unionid
+	 * 学号id
 	 */
 	private String id;
 
@@ -68,7 +68,7 @@ public final class Token {
 			this.maxAge = json.getIntValue("maxAge");
 			this.time = json.getLongValue("time");
 			this.hash = json.getString("hash");
-			this.phone = json.getString("phone");
+			//this.phone = json.getString("phone");
 			this.unionid = json.getString("unionid");
 			this.id = json.getString("id");
 		} catch (JSONException e) {
@@ -80,7 +80,7 @@ public final class Token {
 		this.maxAge = json.getIntValue("maxAge");
 		this.time = json.getLongValue("time");
 		this.hash = json.getString("hash");
-		this.phone = json.getString("phone");
+		//this.phone = json.getString("phone");
 		this.unionid = json.getString("unionid");
 		this.id = json.getString("id");
 	}
@@ -92,7 +92,7 @@ public final class Token {
 			json.put("maxAge", maxAge);
 			json.put("time", time);
 			json.put("hash", hash);
-			json.put("phone", phone);
+			//json.put("phone", phone);
 			json.put("unionid", unionid);
 			json.put("id", id);
 		} catch (JSONException e) {
@@ -110,18 +110,18 @@ public final class Token {
 	/**
 	 * 创建token
 	 * @param tokenName 令牌名
-	 * @param phone 登录名
+	 * @param id 登录名
 	 * @param salt 秘钥
 	 * @param maxAge 过期时间
 	 * @return
 	 */
-	public static Token buildToken(String tokenName, String phone, String salt, int maxAge) {
+	public static Token buildToken(String tokenName, String id, String salt, int maxAge) {
 		long now = System.currentTimeMillis();
 		Token token = new Token();
 		token.setTokenName(tokenName);
 		token.setMaxAge(maxAge);
 		token.setTime(now);
-		token.setPhone(phone);
+		token.setId(id);
 		if(StringUtil.isNotEmpty(salt)){
 			String hash = Token.generateHash(token.getMaxAge(), now, salt);
 			token.setHash(hash);
@@ -251,6 +251,7 @@ public final class Token {
 	}
 
 	
+/*
 	public String getPhone() {
 		return phone;
 	}
@@ -258,6 +259,7 @@ public final class Token {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+*/
 
 	public String getUnionid() {
 		return unionid;
@@ -269,5 +271,9 @@ public final class Token {
 
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }
