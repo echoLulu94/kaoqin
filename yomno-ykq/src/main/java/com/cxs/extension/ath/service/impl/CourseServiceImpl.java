@@ -21,7 +21,11 @@ public class CourseServiceImpl  implements CourseService{
         long time = System.currentTimeMillis();
 
         if(classId!=null&&startTime!=null&&endTime!=null&&!"".equals(classId)){
-          courseMapper.findCourseDetail(classId,startTime,endTime);
+            course= courseMapper.findCourseDetail(classId,startTime,endTime);
+
+
+
+
 
 
 
