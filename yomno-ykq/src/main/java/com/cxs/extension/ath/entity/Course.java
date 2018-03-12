@@ -12,6 +12,8 @@ import java.io.Serializable;
  * @email: huimin.wu@iyomoo.com
  * @date: 2018年02月06日
  */
+
+
 @Entity
 @Table(name = "ath_course", schema = "")
 public class Course  implements Serializable {
@@ -22,13 +24,21 @@ public class Course  implements Serializable {
     @Column(name ="id",nullable=false)
     private String id;
     /**班级id*/
-    @ManyToOne
+    @Column(name ="class_id",nullable=false)
+    private String classId;
+   /* @ManyToOne
+    @Transient
     @JoinColumn(name = "class_id" ,referencedColumnName = "id" ,nullable = false)
     private Classes classes;
-    /**用户id*/
+    *//*
     @ManyToOne
+    @Transient
     @JoinColumn(name = "user_id" ,referencedColumnName = "id" ,nullable = false)
-    private User user;
+    private User user;*/
+    /**用户id*/
+    @Column(name="user_id",nullable = false)
+    private String userId;
+
     /**班级名称*/
     @Column(name ="course_name",nullable=false)
     private String courseName;
@@ -43,6 +53,7 @@ public class Course  implements Serializable {
     private String courseLocation;
     /**考勤id*/
     @ManyToOne
+    @Transient
     @JoinColumn(name = "record_id" ,referencedColumnName = "id" ,nullable = false)
     private Record record;
     /**创建者ID*/
@@ -58,20 +69,28 @@ public class Course  implements Serializable {
     @Column(name ="update_time",nullable=true)
     private Long updateTime;
 
-    public Classes getClasses() {
-        return classes;
+    public String getId() {
+        return id;
     }
 
-    public void setClasses(Classes classes) {
-        this.classes = classes;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public String getClassId() {
+        return classId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setClassId(String classId) {
+        this.classId = classId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getCourseName() {
@@ -144,5 +163,23 @@ public class Course  implements Serializable {
 
     public void setUpdateTime(Long updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id='" + id + '\'' +
+                ", classId='" + classId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", courseTime=" + courseTime +
+                ", courseOrder=" + courseOrder +
+                ", courseLocation='" + courseLocation + '\'' +
+                ", record=" + record +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

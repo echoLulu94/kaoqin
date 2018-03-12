@@ -85,8 +85,6 @@ public interface UserService {
     ResultDo<UserDto> findUserById(String id);
 
 
-
-
     /**
      * 分页查询用户信息
      * @return

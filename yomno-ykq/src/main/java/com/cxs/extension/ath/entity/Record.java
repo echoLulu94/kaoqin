@@ -1,6 +1,7 @@
 package com.cxs.extension.ath.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.io.Serializable;
  * @email: huimin.wu@iyomoo.com
  * @date: 2018年02月06日
  */
+@Entity
 @Table(name = "ath_record", schema = "")
 public class Record implements Serializable {
     private static final long serialVersionUID = -2504515932628991600L;

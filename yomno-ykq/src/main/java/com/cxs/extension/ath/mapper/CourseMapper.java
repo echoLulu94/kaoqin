@@ -9,19 +9,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CourseMapper  extends CoreMapper<Course> {
+public interface CourseMapper extends CoreMapper<Course> {
     /**
-    * 根据日期 以及班级 查询课程列表
-    * @param
-    * @return
-    */
+     * 根据日期 以及班级 查询课程列表
+     * @param
+     * @return
+     */
 
     @Select("Select c.class_id, c.course_name,c.course_order,r.record_status,c.course_time " +
             "from ath_course c inner join  ath_record r on r.id=c.record_id " +
             "where c.class_id= #{classId} and c.course_time between #{startTime} and #{endTime}" )
     List<Course> findCourseDetail(@Param("classId") String classId , @Param("startTime") Long startTime, @Param("endTime")Long endTime);
-
-
-
-
 }

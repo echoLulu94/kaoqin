@@ -1,13 +1,9 @@
 package com.cxs.extension.ath.service.impl;
 
-
-import com.cxs.extension.ath.dto.UserDto;
 import com.cxs.extension.ath.entity.Course;
 import com.cxs.extension.ath.mapper.CourseMapper;
 import com.cxs.extension.ath.result.CourseResult;
 import com.cxs.extension.ath.service.api.CourseService;
-import com.cxs.extension.sys.interceptor.CorsInterceptor;
-import com.cxs.framework.dto.PageDto;
 import com.cxs.framework.dto.ResultDo;
 import com.cxs.framework.result.InterfaceResult;
 import org.slf4j.Logger;
@@ -21,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class CourseServiceImpl  implements CourseService{
-    private final Logger logger = LoggerFactory.getLogger(CorsInterceptor.class);
+public class CourseServiceImpl implements CourseService {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private CourseMapper courseMapper;
 
@@ -31,8 +27,12 @@ public class CourseServiceImpl  implements CourseService{
         ResultDo<Map<String, Object>> resultDo = new ResultDo<Map<String, Object>>();
         Map<String, Object> resultMap = new HashMap<String, Object>();
         List<Course> courseList=new ArrayList<>();
+        classId="0508201";
+        startTime=(long)20170801;
+        endTime=(long)20170912;
         if(classId!=null&&startTime!=null&&endTime!=null&&!"".equals(classId)){
             courseList= courseMapper.findCourseDetail(classId,startTime,endTime);
+            logger.info(courseList.toString());
             if(courseList!=null){
                 resultDo.setResultDo(InterfaceResult.SUCCESS);
                 logger.info(InterfaceResult.SUCCESS.getValue());
@@ -48,6 +48,4 @@ public class CourseServiceImpl  implements CourseService{
         resultDo.setResultData(resultMap);
         return resultDo;
     }
-
-
 }

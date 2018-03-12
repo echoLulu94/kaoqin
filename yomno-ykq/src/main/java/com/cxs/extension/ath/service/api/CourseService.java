@@ -6,5 +6,6 @@ import java.util.Map;
 
 public interface CourseService {
 
-    ResultDo<Map<String,Object>> findCourseList( String classId, Long startTime, Long endTime);
+
+    ResultDo<Map<String,Object>> findCourseList(String classId, Long startTime, Long endTime);
 }
