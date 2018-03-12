@@ -2492,3 +2492,46 @@ CREATE TABLE `mak_activity` (
 -- ----------------------------
 INSERT INTO `mak_activity` VALUES ('077785aa95bc43a0a2aecd6931b015da', null, 'wxb159c1d407aa07ca', 'wxb159c1d407aa07ca', '11d01bbabed94f1fa3a1dea11e28ce4d', '718e291870e34db782bdbc597c8e1ac4', '测试活动', 0xE7AE80E4BB8BEFBC8CE7AE80E4BB8B6169, '', null, '1504627200000', '1506614340000', '', '0', 0x7B7D, '南京', null, null, '', null, null, 0x687474703A2F2F7777772E62616964752E636F6D, '0a5623829c034ac78244b9e08ef4b743activity.png', '1029ba3f78c9a24a33884d3d4412c2a7f9sign.png', '11283bc38eab9944758abcbf780ddc8da1sign.png', '3', '1506742079166', null, '1506742079166', null);
 INSERT INTO `mak_activity` VALUES ('e24128d3273a47d1a18937ef0e391601', '', 'wxb159c1d407aa07ca', 'wxb159c1d407aa07ca', '36cc6cffe903411ebe4dec6ff7578d3d', '5de9e8a981384a00a4b2b7ade5970544', '测试001', '', '', null, '1504886400000', '1504972740000', '', '1', 0x7B7D, '', null, null, '', '', null, '', '', '10208ca1d06df24a5e8b45fc4870b846b8sign.png', '111c2606cc60b54476a69efd76096f6d2dsign.png', '2', '1506740789772', null, '1506743941327', null);
+
+
+DROP TABLE IF EXISTS `ath_news`;
+CREATE TABLE `ath_news` (
+	`id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT 'id',
+	`news_title` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT ' 新闻标题',
+	`news_url` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT ' 新闻url',
+	`create_time` bigint(20) DEFAULT NULL COMMENT '创建时间',
+	`create_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
+	`update_time` bigint(20) DEFAULT NULL COMMENT '修改时间',
+	`update_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='新闻表';
+
+
+DROP TABLE IF EXISTS `ath_banner`;
+CREATE TABLE `ath_banner` (
+	`id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT 'id',
+	`banner_title` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT ' banner标题',
+	`banner_url` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT ' bannerurl',
+	`create_time` bigint(20) DEFAULT NULL COMMENT '创建时间',
+	`create_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
+	`update_time` bigint(20) DEFAULT NULL COMMENT '修改时间',
+	`update_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='banner表';
+
+DROP TABLE IF EXISTS `ath_notify`;
+CREATE TABLE `ath_notify` (
+	`id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT 'id',
+	`notify_title` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT ' notify标题',
+	`notify_url` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT ' notify url',
+	`create_time` bigint(20) DEFAULT NULL COMMENT '创建时间',
+	`create_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
+	`update_time` bigint(20) DEFAULT NULL COMMENT '修改时间',
+	`update_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='提醒';
+
+
+INSERT INTO `ath_news` VALUES ('077785aa95bc43a0a2aecd6931b015da','news1','newsUrl',null,null,null,null);
+INSERT INTO `ath_banner` VALUES ('077785aa95bc43a0a2aecd6931b015da','banner1','bannerUrl',null,null,null,null);
+INSERT INTO `ath_notify` VALUES ('077785aa95bc43a0a2aecd6931b015da','notify1','notifyUrl',null,null,null,null);
