@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.cxs.extension.core.utils.CoreMapper;
 import com.cxs.extension.sys.entity.DictItem;
+import org.springframework.stereotype.Repository;
 
 /**
  * 
@@ -18,6 +19,8 @@ import com.cxs.extension.sys.entity.DictItem;
  * @date: 2017年05月25日
  *
  */
+
+@Repository
 public interface DictItemMapper extends CoreMapper<DictItem> {
 
 	/**

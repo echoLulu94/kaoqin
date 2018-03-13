@@ -251,24 +251,23 @@ public class DictItemServiceImpl implements DictItemService {
 
 	@Override
 	public ResultDo<DictItemDto> findDictItemById(String id) {
-		DictItemDto dictItemDto = new DictItemDto();
-		ResultDo<DictItemDto> resultDo = new ResultDo<DictItemDto>();
+		DictItemDto dictItemDto=new DictItemDto();
+		ResultDo<DictItemDto> resultDo =new ResultDo<>();
 		try {
-			if (null != id && !"".equals(id)) {
-				DictItem dictItem = dictItemMapper.selectByPrimaryKey(id);
-				DictItemParseUtil.parseToDto(dictItem, dictItemDto);
-				resultDo.setResultDo(InterfaceResult.SUCCESS);
-				logger.info(InterfaceResult.SUCCESS.getValue());
-			} else {
-				resultDo.setResultDo(DictItemResult.FIND_BY_ID_NOT_NULL);
-				logger.error(DictItemResult.FIND_BY_ID_NOT_NULL.getValue());
-			}
+			if(id!=null&&"".equals(id)){
+                DictItem dictItem=dictItemMapper.selectByPrimaryKey(id);
+                DictItemParseUtil.parseToDto(dictItem,dictItemDto);
+                resultDo.setResultDo(InterfaceResult.SUCCESS);
+                logger.info(InterfaceResult.SUCCESS.getValue());
+            }else{
+                resultDo.setResultDo(DictItemResult.FIND_BY_ID_NOT_NULL);
+                logger.info(DictItemResult.FIND_BY_ID_NOT_NULL.getValue());
+            }
 		} catch (Exception e) {
 			resultDo.setResultDo(DictItemResult.FIND_FAILURE);
-			logger.error(DictItemResult.FIND_FAILURE.getValue(), e);
+			logger.info(DictItemResult.FIND_FAILURE.getValue());
 		}
-		resultDo.setResultData(dictItemDto);
-		return resultDo;
+		return  resultDo;
 	}
 
 	@Override
