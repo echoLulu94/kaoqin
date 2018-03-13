@@ -2531,7 +2531,6 @@ CREATE TABLE `ath_notify` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='提醒';
 
-
 INSERT INTO `ath_news` VALUES ('077785aa95bc43a0a2aecd6931b015da','news1','newsUrl',null,null,null,null);
 INSERT INTO `ath_banner` VALUES ('077785aa95bc43a0a2aecd6931b015da','banner1','bannerUrl',null,null,null,null);
 INSERT INTO `ath_notify` VALUES ('077785aa95bc43a0a2aecd6931b015da','notify1','notifyUrl',null,null,null,null);

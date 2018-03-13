@@ -49,64 +49,70 @@ public class UserController {
     @NoAuth
     public ResultDo<UserDto> Login(String id, String pwd, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         ResultDo<UserDto> resultDo = new ResultDo<UserDto>();
-        UserDto userDto = userService.findOneById(id);
-        Integer loginFlag = 0;
-        if (null != userDto) {
-            //获取用户输入的密码，并加密得到真实密码
-            if(pwd!=null){
-                String password = MessageDigestUtil.hmacsha512(pwd, userDto.getSalt());
-                if (userDto.getPwd().equals(password)) {
-                    //获得令牌
-                    Token token = Token.buildToken(sysConfig.getTokenName(), id, userDto.getSalt(), Token.LOGIN_MAX_AGE);
-                    resultDo.setResultDo(UserResult.LOGIN_SUCCESS);
-                    resultDo.setResultData(userDto);
-                    if (null == token) {
-                        resultDo.setResultDo(UserResult.LOGINNAME_OR_PWD_INCORRECT);
-                        logger.error(UserResult.LOGINNAME_OR_PWD_INCORRECT.getValue());
+        if(id!=null){
+            UserDto userDto = userService.findOneById(id);
+            Integer loginFlag = 0;
+            if (null != userDto) {
+                //获取用户输入的密码，并加密得到真实密码
+                if(pwd!=null){
+                    String password = MessageDigestUtil.hmacsha512(pwd, userDto.getSalt());
+                    if (userDto.getPwd().equals(password)) {
+                        //获得令牌
+                        Token token = Token.buildToken(sysConfig.getTokenName(), id, userDto.getSalt(), Token.LOGIN_MAX_AGE);
+                        resultDo.setResultDo(UserResult.LOGIN_SUCCESS);
+                        resultDo.setResultData(userDto);
+                        if (null == token) {
+                            resultDo.setResultDo(UserResult.LOGINNAME_OR_PWD_INCORRECT);
+                            logger.error(UserResult.LOGINNAME_OR_PWD_INCORRECT.getValue());
+                        } else {
+                            Cookie cookie = Token.buildCookie(sysConfig.getTokenName(), token.toTokenString(), token.getMaxAge());
+                            response.addCookie(cookie);
+                            loginFlag = 1;
+                        }
                     } else {
-                        Cookie cookie = Token.buildCookie(sysConfig.getTokenName(), token.toTokenString(), token.getMaxAge());
-                        response.addCookie(cookie);
-                        loginFlag = 1;
+                        resultDo.setResultDo(UserResult.PWD_ERROR);
+                        logger.error(UserResult.PWD_ERROR.getValue());
                     }
+                }else {
+                    resultDo.setResultDo(UserResult.PWD_NOT_NULL);
+                    logger.error(UserResult.PWD_NOT_NULL.getValue());
+                }
+                if (loginFlag == 0) {
+                    // 登录失败
+                    if (null == userDto.getLoginFailCount()) {
+                        userDto.setLoginFailCount(0);
+                    }
+                    userDto.setLoginFailCount(userDto.getLoginFailCount() + 1);
+                    userService.updateUser(userDto);
                 } else {
-                    resultDo.setResultDo(UserResult.PWD_ERROR);
-                    logger.error(UserResult.PWD_ERROR.getValue());
-                }
-            }else {
-                resultDo.setResultDo(UserResult.PWD_NOT_NULL);
-                logger.error(UserResult.PWD_NOT_NULL.getValue());
-            }
-            if (loginFlag == 0) {
-                // 登录失败
-                if (null == userDto.getLoginFailCount()) {
-                    userDto.setLoginFailCount(0);
-                }
-                userDto.setLoginFailCount(userDto.getLoginFailCount() + 1);
-                userService.updateUser(userDto);
-            } else {
-                // 登录成功
-                userDto.setLoginTime(System.currentTimeMillis());
-                System.out.println("登录时间" + userDto.getLoginTime() + "系统时间" + System.currentTimeMillis());
-                if (null != userDto.getLoginFailCount() && userDto.getLoginFailCount() > 0) {
-                    // 登录失败次数不为0，
-                    userDto.setLoginFailCount(0);
-                }
-                // TODO 修改用户信息增加登录设备相关信息
+                    // 登录成功
+                    userDto.setLoginTime(System.currentTimeMillis());
+                    System.out.println("登录时间" + userDto.getLoginTime() + "系统时间" + System.currentTimeMillis());
+                    if (null != userDto.getLoginFailCount() && userDto.getLoginFailCount() > 0) {
+                        // 登录失败次数不为0，
+                        userDto.setLoginFailCount(0);
+                    }
+                    // TODO 修改用户信息增加登录设备相关信息
 				/*try {
 					userService.updateUser(userDto);
 				} catch (Exception e) {
 					resultDo.setResultDo(UserResult.UPDATE_LOGIN_DEVICE_ERROR);
 					logger.error(UserResult.UPDATE_LOGIN_DEVICE_ERROR.getValue(), e);
 				}*/
-                // TODO 记录登录日志
-                // 返回用户信息,去除密码和加密秘钥信息
-                userDto.setPwd("******");
-                userDto.setSalt("******");
+                    // TODO 记录登录日志
+                    // 返回用户信息,去除密码和加密秘钥信息
+                    userDto.setPwd("******");
+                    userDto.setSalt("******");
+                }
+            }else{
+                resultDo.setResultDo(UserResult.LOGIN_USER_NOT_EXIST);
+                logger.error(UserResult.LOGIN_USER_NOT_EXIST.getValue());
             }
         }else{
             resultDo.setResultDo(UserResult.LOGIN_USER_NOT_EXIST);
             logger.error(UserResult.LOGIN_USER_NOT_EXIST.getValue());
         }
+
         return resultDo;
     }
 
