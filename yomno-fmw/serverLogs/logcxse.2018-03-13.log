@@ -5464,3 +5464,38 @@ java.lang.NullPointerException: null
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590)
 	at java.lang.Thread.run(Thread.java:745)
 2018-03-13 11:13:32.451 [qtp1383860365-28] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Cleared thread-bound request context: Request(GET //localhost:8888/dev/ath/login?id=%225b8298a36f6649579a0eaea2177d342d%22)@20575e18
+2018-03-13 11:49:10.799 [qtp1383860365-27] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Bound request context to thread: Request(GET //192.168.1.183:8888/dev/ath/login)@5ab595e1
+2018-03-13 11:49:10.800 [qtp1383860365-27] INFO  com.cxs.extension.sys.interceptor.CorsInterceptor - 设置跨域处理！
+2018-03-13 11:49:10.800 [qtp1383860365-27] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - sessionId:[node01teyd3q2ija4in7bmokf4mv741]
+2018-03-13 11:49:10.800 [qtp1383860365-27] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 请求:[http://192.168.1.183:8888/dev/ath/login]
+2018-03-13 11:49:10.800 [qtp1383860365-27] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 无需鉴权的请求!
+2018-03-13 11:49:10.801 [qtp1383860365-27] ERROR com.cxs.extension.sys.interceptor.CorsInterceptor - 用户不存在！
+2018-03-13 11:49:10.802 [qtp1383860365-27] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Cleared thread-bound request context: Request(GET //192.168.1.183:8888/dev/ath/login)@5ab595e1
+2018-03-13 11:49:11.317 [qtp1383860365-31] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Bound request context to thread: Request(GET //192.168.1.183:8888/dev/ath/login)@5ab595e1
+2018-03-13 11:49:11.318 [qtp1383860365-31] INFO  com.cxs.extension.sys.interceptor.CorsInterceptor - 设置跨域处理！
+2018-03-13 11:49:11.318 [qtp1383860365-31] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - sessionId:[node01teyd3q2ija4in7bmokf4mv741]
+2018-03-13 11:49:11.318 [qtp1383860365-31] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 请求:[http://192.168.1.183:8888/dev/ath/login]
+2018-03-13 11:49:11.318 [qtp1383860365-31] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 无需鉴权的请求!
+2018-03-13 11:49:11.318 [qtp1383860365-31] ERROR com.cxs.extension.sys.interceptor.CorsInterceptor - 用户不存在！
+2018-03-13 11:49:11.319 [qtp1383860365-31] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Cleared thread-bound request context: Request(GET //192.168.1.183:8888/dev/ath/login)@5ab595e1
+2018-03-13 13:35:10.712 [qtp1383860365-28] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Bound request context to thread: Request(GET //192.168.1.183:8888/dev/ath/login)@7be31e5c
+2018-03-13 13:35:10.712 [qtp1383860365-28] INFO  com.cxs.extension.sys.interceptor.CorsInterceptor - 设置跨域处理！
+2018-03-13 13:35:10.713 [qtp1383860365-28] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - sessionId:[node0nfd5cv5fze0y1p1hicjvdm80d2]
+2018-03-13 13:35:10.713 [qtp1383860365-28] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 请求:[http://192.168.1.183:8888/dev/ath/login]
+2018-03-13 13:35:10.713 [qtp1383860365-28] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 无需鉴权的请求!
+2018-03-13 13:35:10.714 [qtp1383860365-28] ERROR com.cxs.extension.sys.interceptor.CorsInterceptor - 用户不存在！
+2018-03-13 13:35:10.715 [qtp1383860365-28] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Cleared thread-bound request context: Request(GET //192.168.1.183:8888/dev/ath/login)@7be31e5c
+2018-03-13 13:35:11.014 [qtp1383860365-33] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Bound request context to thread: Request(GET //192.168.1.183:8888/dev/ath/login)@7be31e5c
+2018-03-13 13:35:11.023 [qtp1383860365-33] INFO  com.cxs.extension.sys.interceptor.CorsInterceptor - 设置跨域处理！
+2018-03-13 13:35:11.023 [qtp1383860365-33] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - sessionId:[node0nfd5cv5fze0y1p1hicjvdm80d2]
+2018-03-13 13:35:11.023 [qtp1383860365-33] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 请求:[http://192.168.1.183:8888/dev/ath/login]
+2018-03-13 13:35:11.023 [qtp1383860365-33] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 无需鉴权的请求!
+2018-03-13 13:35:11.023 [qtp1383860365-33] ERROR com.cxs.extension.sys.interceptor.CorsInterceptor - 用户不存在！
+2018-03-13 13:35:11.031 [qtp1383860365-33] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Cleared thread-bound request context: Request(GET //192.168.1.183:8888/dev/ath/login)@7be31e5c
+2018-03-13 13:57:35.670 [qtp1383860365-33] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Bound request context to thread: Request(GET //192.168.1.183:8888/dev/ath/login)@1e7d27d4
+2018-03-13 13:57:35.671 [qtp1383860365-33] INFO  com.cxs.extension.sys.interceptor.CorsInterceptor - 设置跨域处理！
+2018-03-13 13:57:35.671 [qtp1383860365-33] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - sessionId:[node0nfd5cv5fze0y1p1hicjvdm80d2]
+2018-03-13 13:57:35.672 [qtp1383860365-33] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 请求:[http://192.168.1.183:8888/dev/ath/login]
+2018-03-13 13:57:35.672 [qtp1383860365-33] INFO  com.cxs.extension.sys.interceptor.AuthInterceptor - 无需鉴权的请求!
+2018-03-13 13:57:35.672 [qtp1383860365-33] ERROR com.cxs.extension.sys.interceptor.CorsInterceptor - 用户不存在！
+2018-03-13 13:57:35.675 [qtp1383860365-33] DEBUG o.s.boot.web.filter.OrderedRequestContextFilter - Cleared thread-bound request context: Request(GET //192.168.1.183:8888/dev/ath/login)@1e7d27d4

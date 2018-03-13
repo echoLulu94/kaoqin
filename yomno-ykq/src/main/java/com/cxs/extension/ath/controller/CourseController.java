@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/cou")
+@RequestMapping("/course")
 public class CourseController {
     @Autowired
     private CourseService courseService;
