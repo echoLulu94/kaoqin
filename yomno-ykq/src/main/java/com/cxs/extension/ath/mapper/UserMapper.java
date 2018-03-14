@@ -57,7 +57,7 @@ public interface UserMapper extends CoreMapper<User> {
 	 */
 	@Delete("delete from ath_user where id in (${ids})")
 	void deleteByIds(@Param("ids") String ids);
-			
+
 	/**
 	 *  
 	 * @param pwd

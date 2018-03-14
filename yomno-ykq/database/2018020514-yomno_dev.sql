@@ -2538,10 +2538,13 @@ CREATE TABLE `ath_term` (
 	`term_name` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT ' 学期名称：春季学期,秋季学期',
 	`start_time` bigint(20) DEFAULT NULL COMMENT '学期开始时间',
 	`end_time` bigint(20) DEFAULT NULL COMMENT '学期结束时间',
-	`week` bigint(20) DEFAULT NULL COMMENT '学期周',
+	`week` int(6) DEFAULT NULL COMMENT '学期周',
 	`create_time` bigint(20) DEFAULT NULL COMMENT '创建时间',
 	`create_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
 	`update_time` bigint(20) DEFAULT NULL COMMENT '修改时间',
 	`update_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='学期表';
+
+INSERT INTO ath_term (`id`,`term_name`,`start_time`,`end_time`,`end_time`,`week`,`create_time`,`create_by`,`update_time`,`update_by`) VALUES
+	('077785aa95bc43a0a2aecd6931b015da','春季学期',);
