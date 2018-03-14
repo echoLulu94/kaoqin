@@ -27,9 +27,9 @@ public class CourseServiceImpl implements CourseService {
         ResultDo<Map<String, Object>> resultDo = new ResultDo<Map<String, Object>>();
         Map<String, Object> resultMap = new HashMap<String, Object>();
         List<Course> courseList=new ArrayList<>();
-        classId="0508201";
+        /*classId="0508201";
         startTime=(long)20170801;
-        endTime=(long)20170912;
+        endTime=(long)20170912;*/
         if(classId!=null&&startTime!=null&&endTime!=null&&!"".equals(classId)){
             courseList= courseMapper.findCourseDetail(classId,startTime,endTime);
             logger.info(courseList.toString());

@@ -2395,7 +2395,7 @@ DROP TABLE IF EXISTS `ath_record`;
 CREATE TABLE IF NOT EXISTS `ath_record` (
   `id` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '打卡记录id',
   `record_type` varchar(2) COLLATE utf8_bin DEFAULT NULL COMMENT '记录类型：10-课堂考勤；11-活动考勤' ,
-  `record_status` varchar(2) COLLATE utf8_bin DEFAULT NULL COMMENT '考勤状态：10-准点；11-迟到；12-早退；13-请假；14-缺勤' ,
+  `record_state` varchar(2) COLLATE utf8_bin DEFAULT NULL COMMENT '考勤状态：10-准点；11-迟到；12-早退；13-请假；14-缺勤' ,
   `record_time` bigint(20) DEFAULT NULL COMMENT '记录时间',
   `create_by` varchar(40) DEFAULT NULL COMMENT '创建人',
   `create_time` bigint(20) DEFAULT NULL COMMENT '创建时间',
@@ -2457,6 +2457,7 @@ CREATE TABLE `mak_activity` (
   `id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT 'id',
   `user_id` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '用户id',
   `title` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '标题',
+	`worker_man` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '考勤员姓名',
   `introduction` text COLLATE utf8_bin COMMENT '活动简介',
   `sponsor` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '主办方',
   `sign_up_deadline` bigint(20) DEFAULT NULL COMMENT '报名截止时间',
@@ -2483,8 +2484,8 @@ CREATE TABLE `mak_activity` (
 -- ----------------------------
 -- Records of mak_activity
 -- ----------------------------
-INSERT INTO `mak_activity` VALUES ('077785aa95bc43a0a2aecd6931b015da', '718e291870e34db782bdbc597c8e1ac4', '测试活动', 0xE7AE80E4BB8BEFBC8CE7AE80E4BB8B6169, '', null, '1504627200000', '1506614340000', '', '0', 0x7B7D, '南京', null, null, '', null, null, 0x687474703A2F2F7777772E62616964752E636F6D, '3', '1506742079166', null, '1506742079166', null);
-INSERT INTO `mak_activity` VALUES ('e24128d3273a47d1a18937ef0e391601', '5de9e8a981384a00a4b2b7ade5970544', '测试001', '', '', null, '1504886400000', '1504972740000', '', '1', 0x7B7D, '', null, null, '', '', null, '',  '2', '1506740789772', null, '1506743941327', null);
+INSERT INTO `mak_activity` VALUES ('077785aa95bc43a0a2aecd6931b015da', '718e291870e34db782bdbc597c8e1ac4', '测试活动','西门吹雪', 0xE7AE80E4BB8BEFBC8CE7AE80E4BB8B6169, '', null, '1504627200000', '1506614340000', '', '0', 0x7B7D, '南京', null, null, '', null, null, 0x687474703A2F2F7777772E62616964752E636F6D, '3', '1506742079166', null, '1506742079166', null);
+INSERT INTO `mak_activity` VALUES ('e24128d3273a47d1a18937ef0e391601', '5de9e8a981384a00a4b2b7ade5970544', '测试001','上官', '', '', null, '1504886400000', '1504972740000', '', '1', 0x7B7D, '', null, null, '', '', null, '',  '2', '1506740789772', null, '1506743941327', null);
 
 
 DROP TABLE IF EXISTS `ath_news`;
@@ -2527,3 +2528,18 @@ CREATE TABLE `ath_notify` (
 INSERT INTO `ath_news` VALUES ('077785aa95bc43a0a2aecd6931b015da','news1','newsUrl',null,null,null,null);
 INSERT INTO `ath_banner` VALUES ('077785aa95bc43a0a2aecd6931b015da','banner1','bannerUrl',null,null,null,null);
 INSERT INTO `ath_notify` VALUES ('077785aa95bc43a0a2aecd6931b015da','notify1','notifyUrl',null,null,null,null);
+
+
+DROP TABLE IF EXISTS `ath_term`;
+CREATE TABLE `ath_term` (
+	`id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT 'id',
+	`term_name` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT ' 学期名称：春季学期,秋季学期',
+	`start_time` bigint(20) DEFAULT NULL COMMENT '学期开始时间',
+	`end_time` bigint(20) DEFAULT NULL COMMENT '学期结束时间',
+	`week` bigint(20) DEFAULT NULL COMMENT '学期周',
+	`create_time` bigint(20) DEFAULT NULL COMMENT '创建时间',
+	`create_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
+	`update_time` bigint(20) DEFAULT NULL COMMENT '修改时间',
+	`update_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='学期表';
