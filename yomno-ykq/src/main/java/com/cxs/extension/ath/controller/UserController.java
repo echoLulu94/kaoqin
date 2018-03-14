@@ -14,8 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.cxs.extension.ath.dto.UserDto;
 import com.cxs.extension.ath.result.UserResult;
@@ -44,10 +43,11 @@ public class UserController {
     @Autowired
     private DictItemService dictItemService;
 
-    @RequestMapping("login")
+    @RequestMapping(value="login",method = RequestMethod.GET)
     @ResponseBody
     @NoAuth
-    public ResultDo<UserDto> Login(String id, String pwd, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+    public ResultDo<UserDto> Login(@RequestParam(value = "id",required = true) String id, @RequestParam(value="pwd",required = true
+    ) String pwd,HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         ResultDo<UserDto> resultDo = new ResultDo<UserDto>();
         if(id!=null){
             UserDto userDto = userService.findOneById(id);
@@ -306,7 +306,7 @@ public class UserController {
     @RequestMapping("/resetPhone")
     @ResponseBody
     @NoAuth
-    public ResultDo<UserDto> resetPhone(UserDto userDto) {
+    public ResultDo<UserDto> resetPhone(@ModelAttribute("user") UserDto userDto) {
         return userService.resetPhone(userDto);
     }
 
