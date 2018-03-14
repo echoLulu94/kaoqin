@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `ath_user` (
 DELETE FROM `ath_user`;
 /*!40000 ALTER TABLE `ath_user` DISABLE KEYS */;
 INSERT INTO `ath_user` (`id`, `code`, `nick_name`, `en_name`, `real_name`, `sex`, `idcard`, `birthday`, `head_img_url`, `user_type`, `pwd`, `phone`, `init_pwd`, `email`, `salt`, `locked`, `login_fail_count`, `register_time`, `login_time`, `login_channel`, `login_device_id`, `login_ip`, `create_by`, `create_time`, `update_by`, `update_time`) VALUES
-	('5b8298a36f6649579a0eaea2177d342d', '', 'wu', 'wuhuimin', '吴慧敏', '0', '', '', '', '10', '31e18ac1663d0130d2a91d481bd245f20b81830207b6d72b3613abb5b480c4a78befc6198272a999e0f7464d516d50e51127f703d191c0fbee5be739795bee69', '18817934309', '163160', '', 'nN4HPdRAEmlvlXuAmw5FEuToSb0TF7pN7gJOmylNWLenSWFzvLuAganVNLXRzyHFbkoJ2onSrzMgHbQ4gkaVc1UkjdQObXTsYQHJlY5ckazaBvf2NWJQFeJDmVfOWLML0y6yoee69p31Sq7F9hVSFfYTAEhySA8P9S6wL6PE8tcThQfaDmdRwTJ1R77DyuadkIwPmleFjrHXk7mMkQg3WiCnoItj6oBoXciXi82xci5Qk5Trq46avgGSOIwPhBJW', '0', 0, NULL, 1508833668058, '', '', '', '', 1495700678684, '', 1512107097235),
-	('b0d739b53532481da8230fbd4cafd77d', '', 'echo', '', '张三', '', '', '', '', '10', 'ac72b28cd55200affa71e895c681f67b64666ef814384ac3a991bc38c7f5cc630c3860fce3417267860d59f65c23ab677bc8b1e72dd71d453aba7b5f202c30be', '18616673038', NULL, '', '5BXDkGHW1CB442DrUeLHd7clnjcutK2h1Rndt4tP4BslnJAsjz9OPDLEWHoTEo5BzgbRnlCMpByVHC88yTgC5TP1uuzxxcCdiTXbmNJ1wjTzZiT59H4Rv40nRh6ccgfGg1DEykjkeIagdkntJZS1WpTUIv6sdRta6lqudOwCAnrUPFkda6KPhWWkwVGL3szSguMcf0TFxCwxuWUlX2BuZSkIrC7VSZnvGy0E2iNYqM6UsuidTRhZfAs2Ds334Dye', '0', NULL, 1509425368346, NULL, NULL, NULL, NULL, NULL, 1509425368346, NULL, 1509425385070);
+	('5b8298a36f6649579a0eaea2177d342d', '', 'wu', 'wuhuimin', '吴慧敏', '0', '', '19940715', '', '10', '31e18ac1663d0130d2a91d481bd245f20b81830207b6d72b3613abb5b480c4a78befc6198272a999e0f7464d516d50e51127f703d191c0fbee5be739795bee69', '18817934309', '163160', '', 'nN4HPdRAEmlvlXuAmw5FEuToSb0TF7pN7gJOmylNWLenSWFzvLuAganVNLXRzyHFbkoJ2onSrzMgHbQ4gkaVc1UkjdQObXTsYQHJlY5ckazaBvf2NWJQFeJDmVfOWLML0y6yoee69p31Sq7F9hVSFfYTAEhySA8P9S6wL6PE8tcThQfaDmdRwTJ1R77DyuadkIwPmleFjrHXk7mMkQg3WiCnoItj6oBoXciXi82xci5Qk5Trq46avgGSOIwPhBJW', '0', 0, NULL, 1508833668058, '', '', '', '', 1495700678684, '', 1512107097235),
+	('b0d739b53532481da8230fbd4cafd77d', '', 'echo', '', '张三', '1', '', '19931205', '', '10', 'ac72b28cd55200affa71e895c681f67b64666ef814384ac3a991bc38c7f5cc630c3860fce3417267860d59f65c23ab677bc8b1e72dd71d453aba7b5f202c30be', '18616673038', NULL, '', '5BXDkGHW1CB442DrUeLHd7clnjcutK2h1Rndt4tP4BslnJAsjz9OPDLEWHoTEo5BzgbRnlCMpByVHC88yTgC5TP1uuzxxcCdiTXbmNJ1wjTzZiT59H4Rv40nRh6ccgfGg1DEykjkeIagdkntJZS1WpTUIv6sdRta6lqudOwCAnrUPFkda6KPhWWkwVGL3szSguMcf0TFxCwxuWUlX2BuZSkIrC7VSZnvGy0E2iNYqM6UsuidTRhZfAs2Ds334Dye', '0', NULL, 1509425368346, NULL, NULL, NULL, NULL, NULL, 1509425368346, NULL, 1509425385070);
 /*!40000 ALTER TABLE `ath_user` ENABLE KEYS */;
 
 -- 导出  表 yomno_dev.sys_dict_item 结构
@@ -2381,6 +2381,8 @@ CREATE TABLE IF NOT EXISTS `ath_course` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+SELECT course_name, course_time,course_order,course_location FROM ath_course and
 -- 正在导出表  yomno_dev.ath_course 的数据：~0 rows (大约)
 DELETE FROM `ath_course`;
 INSERT INTO `ath_course` (`id`,`class_id`,`user_id`,`course_name`,`course_time`,`course_order`,`course_location`,`record_id`,`create_by`,`create_time`,`update_by`,`update_time`)  VALUES

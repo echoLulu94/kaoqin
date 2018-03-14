@@ -213,7 +213,7 @@ public class UserServiceImpl implements UserService {
 	public UserDto findOneById(String id) {
 
 		UserDto userDto=new UserDto();
-		if(id!=null&&"".equals(id)){
+		if(id!=null&&!"".equals(id)){
 			User  userTmp=this.userMapper.findOneById(id);
 			if(null!=userTmp){
 				UserParseUtil.parseToDto(userTmp,userDto);
@@ -294,23 +294,35 @@ public class UserServiceImpl implements UserService {
 			return null;
 		}
 	}
-
 	/*重置联系方式*/
 	@Override
-	public ResultDo<UserDto> resetPhone(UserDto userDto) {
+	public ResultDo<UserDto> resetPhone(String  id,String phone) {
 		ResultDo<UserDto> resultDo = new ResultDo<UserDto>();
+		UserDto userDto=new UserDto();
 		try{
-			//查询该（手机号）用户对应的密钥。
-			/*User userTmp = new User();
-			userTmp.setId(userDto.getId());*/
-			userMapper.updateToPhone(userDto.getPhone(), userDto.getId());
-			if(userDto.getId()==null||userDto.getPhone()==null){
-				resultDo.setResultDo(UserResult.UPDATE_BY_NOT_NULL);
-				logger.info(InterfaceResult.FIND_FAILURE.getValue());
+			if(id!=null&&!"".equals(id)){
+				User user=	userMapper.findOneById(id);
+				UserParseUtil.parseToDto(user,userDto);
+				//找到该对象
+				if(userDto!=null){
+					if(phone!=null&&!"".equals(phone)){
+						user.setPhone(phone);
+						userMapper.updateByPrimaryKey(user);
+						resultDo.setResultDo(InterfaceResult.SUCCESS);
+						logger.info(InterfaceResult.SUCCESS.getValue());
+					}else{
+						resultDo.setResultDo(UserResult.PHONE_NOT_NULL);
+						logger.info(UserResult.PHONE_NOT_NULL.getValue());
+					}
 			}else{
-				resultDo.setResultDo(InterfaceResult.SUCCESS);
-				logger.info(InterfaceResult.SUCCESS.getValue());
+					resultDo.setResultDo(UserResult.LOGIN_USER_NOT_EXIST);
+					logger.info(UserResult.LOGIN_USER_NOT_EXIST.getValue());
+				}
+			}else{
+				resultDo.setResultDo(UserResult.FIND_BY_ID_NOT_NULL);
+				logger.info(UserResult.FIND_BY_ID_NOT_NULL.getValue());
 			}
+
 		}catch (Exception e) {
 			resultDo.setResultDo(UserResult.UPDATE_FAILURE);
 			logger.error(UserResult.UPDATE_FAILURE.getValue(), e);

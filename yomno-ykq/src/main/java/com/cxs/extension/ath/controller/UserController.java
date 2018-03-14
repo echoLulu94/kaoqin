@@ -1,27 +1,10 @@
 package com.cxs.extension.ath.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
 import com.cxs.extension.ath.dto.UserDto;
 import com.cxs.extension.ath.result.UserResult;
 import com.cxs.extension.ath.service.api.UserService;
 import com.cxs.extension.core.config.SysConfig;
 import com.cxs.extension.core.utils.MessageDigestUtil;
-//import com.cxs.extension.core.utils.RedisUtil;
 import com.cxs.extension.sys.interceptor.CorsInterceptor;
 import com.cxs.extension.sys.interceptor.NoAuth;
 import com.cxs.extension.sys.service.api.DictItemService;
@@ -29,6 +12,21 @@ import com.cxs.framework.dto.PageDto;
 import com.cxs.framework.dto.ResultDo;
 import com.cxs.framework.result.InterfaceResult;
 import com.cxs.framework.utils.ath.Token;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Controller
 @RequestMapping("/ath")
@@ -43,7 +41,7 @@ public class UserController {
     @Autowired
     private DictItemService dictItemService;
 
-    @RequestMapping(value="login",method = RequestMethod.GET)
+    @RequestMapping(value="login")
     @ResponseBody
     @NoAuth
     public ResultDo<UserDto> Login(@RequestParam(value = "id",required = true) String id, @RequestParam(value="pwd",required = true
@@ -306,8 +304,8 @@ public class UserController {
     @RequestMapping("/resetPhone")
     @ResponseBody
     @NoAuth
-    public ResultDo<UserDto> resetPhone(@ModelAttribute("user") UserDto userDto) {
-        return userService.resetPhone(userDto);
+    public ResultDo<UserDto> resetPhone(@RequestParam(value = "id",required = true)String id,@RequestParam(value = "phone",required = true) String  phone) {
+        return userService.resetPhone(id,phone);
     }
 
 }

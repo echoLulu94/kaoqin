@@ -1,11 +1,15 @@
 package com.cxs.extension.ath.entity;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  *
@@ -26,15 +30,19 @@ public class User implements Serializable{
 	private String id;
 	/**用户编码*/
 	@Column(name ="code",nullable=true)
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String code;
 	/**昵称*/
 	@Column(name ="nick_name",nullable=true)
+	@JsonIgnore
 	private String nickName;
 	/**英文名*/
 	@Column(name ="en_name",nullable=true)
-	private String enName;	
+	@JsonIgnore
+	private String enName;
 	/**用户姓名*/
 	@Column(name ="real_name",nullable=true)
+	@JsonIgnore
 	private String realName;
 	/**类型：10-超级管理员；11-考勤员；12-教师；13-学生*/
 	@Column(name ="user_type",nullable=true)
@@ -53,6 +61,7 @@ public class User implements Serializable{
 	private String sex;
 	/**性别*/
 	@Column(name ="idcard",nullable=true)
+	@JsonIgnore
 	private String idcard;
 	/**性别*/
 	@Column(name ="birthday",nullable=true)
@@ -384,6 +393,7 @@ public class User implements Serializable{
 	 *方法: 设置创建时间
 	 *@param: Long  创建时间
 	 */
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
 	public void setCreateTime(Long createTime){
 		this.createTime = createTime;
 	}
@@ -447,6 +457,7 @@ public class User implements Serializable{
 		this.idcard = idcard;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
 	public String getBirthday() {
 		return birthday;
 	}

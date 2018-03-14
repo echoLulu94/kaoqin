@@ -44,8 +44,8 @@ public class UserMapperTest {
         List<Banner> banners = bannerMapper.selectAll();
         List<News> news = newsMapper.selectAll();
         //根据用户号查询到用户信息，更新用户
-        user.setPhone("123");
-        userMapper.updateByPrimaryKey(user);
+        user1.setPhone("123234");
+        userMapper.updateByPrimaryKey(user1);
         System.out.println("三个接口的逻辑");
     }
 

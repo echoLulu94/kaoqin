@@ -43,6 +43,7 @@ public interface UserMapper extends CoreMapper<User> {
 	 * @param phone
 	 * @param id
 	 */
+
 	@Update("update ath_user set phone = #{phone}  where id = #{id}")
 	void updateToPhone(@Param("phone") String phone, @Param("id") String id);
 

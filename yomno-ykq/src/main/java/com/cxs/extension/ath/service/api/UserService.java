@@ -40,7 +40,7 @@ public interface UserService {
 	 * @param formerPhone
 	 * @return
 	 */
-	ResultDo<UserDto>  resetPhone(UserDto userDto );
+	ResultDo<UserDto>  resetPhone(String id,String phone);
     /**
      * 保存用户
      * @param userDto 需保存用户数据对象

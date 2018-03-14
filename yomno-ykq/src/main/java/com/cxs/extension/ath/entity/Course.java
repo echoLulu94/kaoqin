@@ -1,5 +1,7 @@
 package com.cxs.extension.ath.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -24,37 +26,28 @@ public class Course  implements Serializable {
     @Column(name ="id",nullable=false)
     private String id;
     /**班级id*/
-    @Column(name ="class_id",nullable=false)
+    @Column(name ="class_id",nullable=true)
     private String classId;
-   /* @ManyToOne
-    @Transient
-    @JoinColumn(name = "class_id" ,referencedColumnName = "id" ,nullable = false)
-    private Classes classes;
-    *//*
-    @ManyToOne
-    @Transient
-    @JoinColumn(name = "user_id" ,referencedColumnName = "id" ,nullable = false)
-    private User user;*/
     /**用户id*/
-    @Column(name="user_id",nullable = false)
+    @Column(name="user_id",nullable = true)
     private String userId;
 
     /**班级名称*/
-    @Column(name ="course_name",nullable=false)
+    @Column(name ="course_name",nullable=true)
     private String courseName;
     /**课程时间*/
-    @Column(name="course_time",nullable = false)
+    @Column(name="course_time",nullable = true)
     private Long courseTime;
     /**课程节次*/
-    @Column(name="course_order",nullable = false)
+    @Column(name="course_order",nullable = true)
     private Integer courseOrder;
     /**课程地点*/
-    @Column(name="course_location",nullable = false)
+    @Column(name="course_location",nullable = true)
     private String courseLocation;
     /**考勤id*/
     @ManyToOne
     @Transient
-    @JoinColumn(name = "record_id" ,referencedColumnName = "id" ,nullable = false)
+    @JoinColumn(name = "record_id" ,referencedColumnName = "id" ,nullable = true)
     private Record record;
     /**创建者ID*/
     @Column(name ="create_by",nullable=true)
@@ -100,7 +93,8 @@ public class Course  implements Serializable {
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
-
+    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
     public Long getCourseTime() {
         return courseTime;
     }
