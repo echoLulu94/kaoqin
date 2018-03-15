@@ -65,6 +65,7 @@ public class User implements Serializable{
 	private String idcard;
 	/**性别*/
 	@Column(name ="birthday",nullable=true)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
 	private String birthday;
 	/**性别*/
 	@Column(name ="head_img_url",nullable=true)
@@ -83,9 +84,11 @@ public class User implements Serializable{
 	private Integer loginFailCount;
 	/**注册时间*/
 	@Column(name ="register_time",nullable=true)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
 	private Long registerTime;
 	/**登录时间*/
 	@Column(name ="login_time",nullable=true)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
 	private Long loginTime;
 	/**登录渠道:10-pc;11-android;12-ios*/
 	@Column(name ="login_channel",nullable=true)
@@ -101,12 +104,14 @@ public class User implements Serializable{
 	private String createBy;
 	/**创建时间*/
 	@Column(name ="create_time",nullable=true)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
 	private Long createTime;
 	/**修改者id*/
 	@Column(name ="update_by",nullable=true)
 	private String updateBy;
 	/**最后修改时间*/
 	@Column(name ="update_time",nullable=true)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
 	private Long updateTime;
 
 	/**
@@ -393,7 +398,7 @@ public class User implements Serializable{
 	 *方法: 设置创建时间
 	 *@param: Long  创建时间
 	 */
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
+
 	public void setCreateTime(Long createTime){
 		this.createTime = createTime;
 	}
@@ -457,7 +462,6 @@ public class User implements Serializable{
 		this.idcard = idcard;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
 	public String getBirthday() {
 		return birthday;
 	}

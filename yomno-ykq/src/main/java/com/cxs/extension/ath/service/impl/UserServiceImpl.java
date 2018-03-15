@@ -282,7 +282,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDto findByPhone(String phone) {
-		//User user = this.userMapper.findByPhone(phone);
 		User userTmp = new User();
 		userTmp.setPhone(phone);
 		User user = this.userMapper.selectOne(userTmp);
@@ -378,5 +377,8 @@ public class UserServiceImpl implements UserService {
 		resultDo.setResultData(userDto);
 		return resultDo;
 	}
+
+
+
 
 }

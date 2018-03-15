@@ -55,7 +55,7 @@ public class StringUtil {
 	 * directly.
 	 * 
 	 * @param obj
-	 *            The nullable string
+	 *            The nullable s	tring
 	 * @return empty string if passed in string is null, or original string
 	 *         without any change
 	 */

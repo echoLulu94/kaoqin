@@ -20,9 +20,15 @@ public class CourseController {
     @RequestMapping("findCourseList")
     @NoAuth
     @ResponseBody
-    public ResultDo<Map<String, Object>> findCourseList(@RequestParam(value = "classId",required = true) String classId,@RequestParam(value = "startTime",required = true) Long startTime, @RequestParam(value = "endTime",required = true) Long endTime) {
-       return  courseService.findCourseList(classId,startTime,endTime);
+    public ResultDo<Map<String, Object>> findCourseList(@RequestParam(value = "classId",required = true) String classId,@RequestParam(value = "startTime",required = true) String  startTime, @RequestParam(value = "endTime",required = true) String endTime) {
+       return  courseService.findCourseListByTime(classId,startTime,endTime);
     }
 
+    @RequestMapping("/findWeekCourse")
+    @NoAuth
+    @ResponseBody
+    public ResultDo<Map<String, Object>> findWeekCourse(@RequestParam(value = "classId",required = true) String classId) {
+        return  courseService.findCourseListByClassId(classId);
+    }
 
 }

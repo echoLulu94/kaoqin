@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TermMapper extends CoreMapper<Term> {
 
-    @Select("select week from ath_term")
+    @Select("select week from ath_term;")
      Integer getTotalWeek ();
+
+    @Select("select start_time from ath_term")
+    Long getTermStartTime();
 }

@@ -1,5 +1,7 @@
 package com.cxs.extension.ath.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,7 +22,13 @@ public class Term  implements Serializable {
     private Long termName;
     /**学期开始时间*/
     @Column(name="start_time",nullable = true)
-    private Long startTime;
+
+    private String  startTime;
+    /**学期结束时间*/
+    @Column(name="end_time",nullable = true)
+    private String endTime;
+    @Column(name="week",nullable = true)
+    private Integer week;
     /**创建者ID*/
     @Column(name ="create_by",nullable=true)
     private String createBy;
@@ -50,12 +58,28 @@ public class Term  implements Serializable {
         this.termName = termName;
     }
 
-    public Long getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Long startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public Integer getWeek() {
+        return week;
+    }
+
+    public void setWeek(Integer week) {
+        this.week = week;
     }
 
     public String getCreateBy() {

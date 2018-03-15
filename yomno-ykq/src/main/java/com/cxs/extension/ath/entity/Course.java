@@ -1,6 +1,5 @@
 package com.cxs.extension.ath.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -37,7 +36,7 @@ public class Course  implements Serializable {
     private String courseName;
     /**课程时间*/
     @Column(name="course_time",nullable = true)
-    private Long courseTime;
+    private String  courseTime;
     /**课程节次*/
     @Column(name="course_order",nullable = true)
     private Integer courseOrder;
@@ -93,13 +92,12 @@ public class Course  implements Serializable {
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
-    
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", locale = "zh",timezone = "GMT+8")
-    public Long getCourseTime() {
+
+    public String getCourseTime() {
         return courseTime;
     }
 
-    public void setCourseTime(Long courseTime) {
+    public void setCourseTime(String courseTime) {
         this.courseTime = courseTime;
     }
 
@@ -157,23 +155,5 @@ public class Course  implements Serializable {
 
     public void setUpdateTime(Long updateTime) {
         this.updateTime = updateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Course{" +
-                "id='" + id + '\'' +
-                ", classId='" + classId + '\'' +
-                ", userId='" + userId + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", courseTime=" + courseTime +
-                ", courseOrder=" + courseOrder +
-                ", courseLocation='" + courseLocation + '\'' +
-                ", record=" + record +
-                ", createBy='" + createBy + '\'' +
-                ", createTime=" + createTime +
-                ", updateBy='" + updateBy + '\'' +
-                ", updateTime=" + updateTime +
-                '}';
     }
 }

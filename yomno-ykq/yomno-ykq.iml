@@ -112,7 +112,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.groovy:groovy-json:2.4.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.jayway.restassured:rest-assured-common:2.3.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.jayway.restassured:xml-path:2.3.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.commons:commons-lang3:3.3.2" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.31" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.25" level="project" />
     <orderEntry type="module-library">
@@ -152,6 +151,7 @@
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.1.11" level="project" />
     <orderEntry type="library" name="Maven: org.swinglabs:pdf-renderer:1.0.5" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.1" level="project" />
     <orderEntry type="library" name="Maven: tk.mybatis:mapper-spring-boot-starter:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: tk.mybatis:mapper-spring-boot-autoconfigure:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: tk.mybatis:mapper:3.3.9" level="project" />

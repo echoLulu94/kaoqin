@@ -2370,7 +2370,7 @@ CREATE TABLE IF NOT EXISTS `ath_course` (
   `class_id` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '班级名称',
   `user_id` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '用户id：学生对应学号，教师对应工号',
   `course_name` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '课程名称',
-  `course_time`  bigint(20) DEFAULT NULL COMMENT '课程时间',
+  `course_time`  varchar (50)COLLATE utf8_bin NOT NULL COMMENT '课程时间',
   `course_order` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '课程节次',
   `course_location` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '课程地点',
   `record_id` varchar(40) COLLATE utf8_bin NOT NULL COMMENT '考勤id',
@@ -2382,14 +2382,17 @@ CREATE TABLE IF NOT EXISTS `ath_course` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-SELECT course_name, course_time,course_order,course_location FROM ath_course and
+SELECT course_name, course_time,course_order,course_location FROM ath_course ;
 -- 正在导出表  yomno_dev.ath_course 的数据：~0 rows (大约)
 DELETE FROM `ath_course`;
 INSERT INTO `ath_course` (`id`,`class_id`,`user_id`,`course_name`,`course_time`,`course_order`,`course_location`,`record_id`,`create_by`,`create_time`,`update_by`,`update_time`)  VALUES
-	('08bf7e7e8e2a48938a60ffc8dbf8a100','0508201','010810123','英语',20170910,'1-2','第一教室301','r001',NULL,NULL ,NULL,NULL),
-	('08bf7e7e8e2a48938a60ffc8dbf8a500','0508202','010810124','自动化',20170910,'3-4','第一教室302','r002',NULL,NULL ,NULL,NULL),
-	('08bf7e7e8e2a48938a60ffc8dbf8a300','0508201','010810125','计算机',20170910,'1-2','第一教室304','r001',NULL,NULL ,NULL,NULL);
-
+	('08bf7e7e8e2a48938a60ffc8dbf8a100','0508201','010810123','英语','20180301','1-2','第一教室301','r001',NULL,NULL ,NULL,NULL),
+	('08bf7e7e8e2a48938a60ffc8dbf8a500','0508202','010810124','自动化','20180312','3-4','第一教室302','r002',NULL,NULL ,NULL,NULL),
+	('08bf7e7e8e2a48938a60ffc8dbf8a301','0508201','010810125','近代史','20180316','1-2','第一教室304','r001',NULL,NULL ,NULL,NULL),
+	('08bf7e7e8e2a48938a60ffc8dbf8b301','0508202','010810125','马克思主义哲学','20180315','1-2','第一教室304','r001',NULL,NULL ,NULL,NULL),
+	('08bf7e7e8e2a48938a60ffc8dbf8b304','0508202','010810125','近代史','20180316','1-2','第一教室304','r001',NULL,NULL ,NULL,NULL),
+	('08bf7e7e8e2a48938a60ffc8dbf8b305','0508201','010810125','近代史','20180313','1-2','第一教室304','r001',NULL,NULL ,NULL,NULL),
+	('08bf7e7e8e2a48938a60ffc8dbf8a302','0508201','010810125','飞行技术','20170910','1-2','第一教室303','r001',NULL,NULL ,NULL,NULL);
 
 
 -- 导出  表 yomno_dev.ath_record 结构
@@ -2531,13 +2534,12 @@ INSERT INTO `ath_news` VALUES ('077785aa95bc43a0a2aecd6931b015da','news1','newsU
 INSERT INTO `ath_banner` VALUES ('077785aa95bc43a0a2aecd6931b015da','banner1','bannerUrl',null,null,null,null);
 INSERT INTO `ath_notify` VALUES ('077785aa95bc43a0a2aecd6931b015da','notify1','notifyUrl',null,null,null,null);
 
-
 DROP TABLE IF EXISTS `ath_term`;
 CREATE TABLE `ath_term` (
 	`id` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT 'id',
 	`term_name` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT ' 学期名称：春季学期,秋季学期',
-	`start_time` bigint(20) DEFAULT NULL COMMENT '学期开始时间',
-	`end_time` bigint(20) DEFAULT NULL COMMENT '学期结束时间',
+	`start_time` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '学期开始时间',
+	`end_time` varchar(40)  COLLATE utf8_bin DEFAULT NULL COMMENT '学期结束时间',
 	`week` int(6) DEFAULT NULL COMMENT '学期周',
 	`create_time` bigint(20) DEFAULT NULL COMMENT '创建时间',
 	`create_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '创建人',
@@ -2545,6 +2547,6 @@ CREATE TABLE `ath_term` (
 	`update_by` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '修改人',
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='学期表';
-
-INSERT INTO ath_term (`id`,`term_name`,`start_time`,`end_time`,`end_time`,`week`,`create_time`,`create_by`,`update_time`,`update_by`) VALUES
-	('077785aa95bc43a0a2aecd6931b015da','春季学期',);
+DELETE FROM `ath_term`;
+INSERT INTO `ath_term` (`id`,`term_name`,`start_time`,`end_time`,`week`,`create_time`,`create_by`,`update_time`,`update_by`) VALUES
+	('077785aa95bc43a0a2aecd6931b015da','春季学期','20180301','20180706',18,NULL,NULL,NULL,NULL);

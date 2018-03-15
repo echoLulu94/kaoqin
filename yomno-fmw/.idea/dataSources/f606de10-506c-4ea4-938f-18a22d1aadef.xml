@@ -1090,8 +1090,10 @@
     <column id="255" parent="209" name="course_time">
       <Position>5</Position>
       <Comment>课程时间</Comment>
-      <DataType>bigint(20)|0</DataType>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
+      <Collation>utf8_bin</Collation>
     </column>
     <column id="256" parent="209" name="course_order">
       <Position>6</Position>
@@ -1670,19 +1672,19 @@
     <column id="347" parent="219" name="start_time">
       <Position>3</Position>
       <Comment>学期开始时间</Comment>
-      <DataType>bigint(20)|0</DataType>
+      <DataType>varchar(40)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="348" parent="219" name="end_time">
       <Position>4</Position>
       <Comment>学期结束时间</Comment>
-      <DataType>bigint(20)|0</DataType>
+      <DataType>varchar(40)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="349" parent="219" name="week">
       <Position>5</Position>
       <Comment>学期周</Comment>
-      <DataType>bigint(20)|0</DataType>
+      <DataType>int(6)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="350" parent="219" name="create_time">
