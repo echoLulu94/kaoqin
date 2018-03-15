@@ -8,11 +8,13 @@ import com.cxs.framework.utils.MondayAndFridayUtil;
 import com.cxs.framework.dto.ResultDo;
 import com.cxs.framework.result.InterfaceResult;
 import com.cxs.framework.utils.DateToWeekUtil;
+import com.cxs.framework.utils.WeekToDateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -35,7 +37,7 @@ public class CourseServiceImpl implements CourseService {
         if (classId != null && startTime != null && endTime != null && !"".equals(classId)) {
             courseList = courseMapper.findCourseDetail(classId, startTime, endTime);
 
-            if (courseList != null&&courseList.size()!=0) {
+            if (courseList != null && courseList.size() != 0) {
                 resultDo.setResultDo(InterfaceResult.SUCCESS);
                 logger.info(InterfaceResult.SUCCESS.getValue());
             } else {
@@ -56,10 +58,19 @@ public class CourseServiceImpl implements CourseService {
         ResultDo<Map<String, Object>> resultDo = new ResultDo<Map<String, Object>>();
         Map<String, Object> resultMap = new HashMap<String, Object>();
         List courseList = new ArrayList<>();
+        if (classId!=null&&!"".equals(classId)&&currentWeek!=null&&currentWeek!=0){
+            try {
+                courseList=courseMapper.findCourseDetail(classId, WeekToDateUtil.getWeekMondayByDate(
+                        WeekToDateUtil.plusDay(currentWeek*7,termMapper.getTermStartTime()),),;)
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
 
+        }
 
-        return null;
+
+        return resultDo;
     }
 
     @Override
@@ -70,8 +81,8 @@ public class CourseServiceImpl implements CourseService {
         Integer totalWeek = termMapper.getTotalWeek();
         /*当前时间*/
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
-        String currentDate=(df.format(new Date()));
-        Integer currentWeek = DateToWeekUtil.timeBettwen(termMapper.getTermStartTime().toString(),currentDate,WEEK);
+        String currentDate = (df.format(new Date()));
+        Integer currentWeek = DateToWeekUtil.timeBettwen(termMapper.getTermStartTime().toString(), currentDate, WEEK);
         System.out.println(currentWeek);
 
         if (classId != null && !"".equals(classId)) {
@@ -79,7 +90,7 @@ public class CourseServiceImpl implements CourseService {
             courseList = courseMapper.findCourseDetail(classId, MondayAndFridayUtil.getWeekMonday(new Date()), MondayAndFridayUtil.getWeekFriday());
             logger.info(courseList.toString());
         }
-        if (courseList != null&&courseList.size()!=0) {
+        if (courseList != null && courseList.size() != 0) {
             resultDo.setResultDo(InterfaceResult.SUCCESS);
             logger.info(InterfaceResult.SUCCESS.getValue());
             resultMap.put("courseList", courseList);
@@ -87,10 +98,10 @@ public class CourseServiceImpl implements CourseService {
             resultDo.setResultDo(CourseResult.FIND_FAILURE);
             logger.info(CourseResult.FIND_FAILURE.getValue());
         }
-        List currentList=new  ArrayList<>();
+        List currentList = new ArrayList<>();
         currentList.add(currentWeek);
         currentList.add(currentDate);
-        resultMap.put("currentList",currentList);
+        resultMap.put("currentList", currentList);
         resultMap.put("totalWeek", totalWeek);
         resultDo.setResultData(resultMap);
         return resultDo;

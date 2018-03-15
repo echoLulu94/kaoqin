@@ -13,5 +13,5 @@ public interface TermMapper extends CoreMapper<Term> {
      Integer getTotalWeek ();
 
     @Select("select start_time from ath_term")
-    Long getTermStartTime();
+    String getTermStartTime();
 }
