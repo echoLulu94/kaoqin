@@ -17,18 +17,28 @@ import java.util.Map;
 public class CourseController {
     @Autowired
     private CourseService courseService;
+
     @RequestMapping("findCourseList")
     @NoAuth
     @ResponseBody
-    public ResultDo<Map<String, Object>> findCourseList(@RequestParam(value = "classId",required = true) String classId,@RequestParam(value = "startTime",required = true) String  startTime, @RequestParam(value = "endTime",required = true) String endTime) {
-       return  courseService.findCourseListByTime(classId,startTime,endTime);
+    public ResultDo<Map<String, Object>> findCourseListByTime(@RequestParam(value = "classId", required = true) String classId, @RequestParam(value = "startTime", required = true) String startTime, @RequestParam(value = "endTime", required = true) String endTime) {
+        return courseService.findCourseListByTime(classId, startTime, endTime);
     }
 
     @RequestMapping("/findWeekCourse")
     @NoAuth
     @ResponseBody
-    public ResultDo<Map<String, Object>> findWeekCourse(@RequestParam(value = "classId",required = true) String classId) {
-        return  courseService.findCourseListByClassId(classId);
+    public ResultDo<Map<String, Object>> findCourseListByClassId(@RequestParam(value = "classId", required = true) String classId) {
+        return courseService.findCourseListByClassId(classId);
+    }
+
+    @RequestMapping("/findWeekCourse")
+    @NoAuth
+    @ResponseBody
+    public ResultDo<Map<String, Object>> findCourseListByWeek(@RequestParam(value = "classId", required = true) String classId, @RequestParam(value = "currentWeek", required = true) Integer currentWeek) {
+        return courseService.findCourseListByWeek(classId, currentWeek);
+
+
     }
 
 }

@@ -60,16 +60,26 @@ public class CourseServiceImpl implements CourseService {
         List courseList = new ArrayList<>();
         if (classId!=null&&!"".equals(classId)&&currentWeek!=null&&currentWeek!=0){
             try {
-                courseList=courseMapper.findCourseDetail(classId, WeekToDateUtil.getWeekMondayByDate(
-                        WeekToDateUtil.plusDay(currentWeek*7,termMapper.getTermStartTime()),),;)
+                String startTime=WeekToDateUtil.getWeekMondayByDate(WeekToDateUtil.plusDay(currentWeek*7,termMapper.getTermStartTime()));
+                String endTime=WeekToDateUtil.getWeekFirDayByDate(WeekToDateUtil.plusDay(currentWeek*7,termMapper.getTermStartTime()));
+                courseList=courseMapper.findCourseDetail(classId,startTime,endTime);
+                if(courseList!=null&&courseList.size()!=0){
+                    resultDo.setResultDo(InterfaceResult.SUCCESS);
+                    logger.info(InterfaceResult.SUCCESS.getValue());
+                }else {
+                    resultDo.setResultDo(CourseResult.FIND_FAILURE);
+                    logger.info(CourseResult.FIND_FAILURE.getValue());
+                }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
-
+        }else{
+            resultDo.setResultDo(CourseResult.FIND_NOT_NULL);
+            logger.info(CourseResult.FIND_NOT_NULL.getValue());
         }
-
-
+        resultMap.put("courseList", courseList);
+        resultDo.setResultData(resultMap);
         return resultDo;
     }
 
