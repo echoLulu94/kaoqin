@@ -29,9 +29,9 @@ public class BasicServiceImpl implements BasicService{
         ResultDo<Map<String, Object>> resultDo = new ResultDo<Map<String, Object>>();
         Map<String, Object> resultMap = new HashMap<String, Object>();
         try{
-            resultMap.put("newsList",newsMapper.selectAll());
-            resultMap.put("bannerList",bannerMapper.selectAll());
-            resultMap.put("notifyList",notifyMapper.selectAll());
+            resultMap.put("newsList",newsMapper.findNews());
+            resultMap.put("bannerList",bannerMapper.findBanner());
+            resultMap.put("notifyList",notifyMapper.findNotify());
             resultDo.setResultDo(InterfaceResult.SUCCESS);
             logger.info(InterfaceResult.SUCCESS.getValue());
         }catch (Exception e){
@@ -40,7 +40,6 @@ public class BasicServiceImpl implements BasicService{
         }
 
         resultDo.setResultData(resultMap);
-
 
         return resultDo;
     }

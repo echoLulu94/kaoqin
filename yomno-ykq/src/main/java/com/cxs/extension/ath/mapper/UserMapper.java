@@ -1,9 +1,6 @@
 package com.cxs.extension.ath.mapper;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import com.cxs.extension.ath.entity.User;
@@ -47,7 +44,6 @@ public interface UserMapper extends CoreMapper<User> {
 
     @Update("update ath_user set phone = #{phone}  where id = #{id}")
     void updateToPhone(@Param("phone") String phone, @Param("id") String id);
-
 
     @Select("select * from ath_user where en_name = #{enName}")
     User findByEnName(@Param("enName") String enName);

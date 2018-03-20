@@ -83,7 +83,6 @@ public class CourseServiceImpl implements CourseService {
             logger.info(CourseResult.FIND_NOT_NULL.getValue());
         }
         resultMap.put("courseList", courseList);
-        //resultMap.put("courseStateList", dictItemService.findByTypeCode("RECORD_STATE").getResultData());
         resultDo.setResultData(resultMap);
         return resultDo;
     }
@@ -94,7 +93,6 @@ public class CourseServiceImpl implements CourseService {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         List courseList = new ArrayList<>();
         Integer totalWeek = termMapper.getTotalWeek();
-        /*当前时间*/
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
         String currentDate = (df.format(new Date()));
         Integer currentWeek = DateToWeekUtil.timeBettwen(termMapper.getTermStartTime().toString(), currentDate, WEEK);
