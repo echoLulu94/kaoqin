@@ -58,7 +58,7 @@ public interface UserMapper extends CoreMapper<User> {
 
     /**
      * @param pwd
-     * @param init_pwd
+     * @param pwd
      * @param id
      */
     @Update("update ath_user set pwd = #{pwd}  where id = #{id}")
