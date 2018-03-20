@@ -30,7 +30,6 @@ public class Course  implements Serializable {
     /**用户id*/
     @Column(name="user_id",nullable = true)
     private String userId;
-
     /**班级名称*/
     @Column(name ="course_name",nullable=true)
     private String courseName;
@@ -44,10 +43,18 @@ public class Course  implements Serializable {
     @Column(name="course_location",nullable = true)
     private String courseLocation;
     /**考勤id*/
-    @ManyToOne
-    @Transient
-    @JoinColumn(name = "record_id" ,referencedColumnName = "id" ,nullable = true)
-    private Record record;
+    @Column(name="record_id",nullable = true)
+    private String  recordId;
+
+
+    public String getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(String recordId) {
+        this.recordId = recordId;
+    }
+
     /**创建者ID*/
     @Column(name ="create_by",nullable=true)
     private String createBy;
@@ -117,13 +124,6 @@ public class Course  implements Serializable {
         this.courseLocation = courseLocation;
     }
 
-    public Record getRecord() {
-        return record;
-    }
-
-    public void setRecord(Record record) {
-        this.record = record;
-    }
 
     public String getCreateBy() {
         return createBy;

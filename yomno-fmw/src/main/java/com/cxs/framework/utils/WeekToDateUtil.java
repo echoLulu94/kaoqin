@@ -7,28 +7,39 @@ import java.util.Date;
 
 public class WeekToDateUtil {
     public static void main(String[] args) throws ParseException {
-        plusDay(100, "20180301");
-        getWeekMondayByDate("20180316");
+        plusDay(14, "20180301");
+        getWeekMondayByDate(plusDay(14,"20180301"));
     }
 
     /**
      * 16      * 指定日期加上天数后的日期
      * 17      * @param num 为增加的天数
-     * 18      * @param newDate 创建时间
+     * 18      * @param startDate 创建时间
      * 19      * @return
      * 20      * @throws ParseException
      * 21
      */
-    public static String plusDay(int num, String newDate) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-        Date currdate = format.parse(newDate);
-        System.out.println("现在的日期是：" + currdate);
-        Calendar ca = Calendar.getInstance();
-        ca.add(Calendar.DATE, num);// num为增加的天数，可以改变的
-        currdate = ca.getTime();
-        String enddate = format.format(currdate);
-        System.out.println("增加天数以后的日期：" + enddate);
-        return enddate;
+    public static String plusDay(int num, String startDate) throws ParseException {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd"); // 日期格式
+        Date date = null;
+        Date newDate = null;
+        try {
+            date = dateFormat.parse(startDate); // 指定日期
+            newDate = addDate(date, num); // 指定日期天数
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateFormat.format(newDate);
+    }
+
+
+
+    public static Date addDate(Date date, long day) throws ParseException {
+        long time = date.getTime(); // 得到指定日期的毫秒数
+        day = day * 24 * 60 * 60 * 1000; // 要加上的天数转换成毫秒数
+        time += day; // 相加得到新的毫秒数
+        return new Date(time); // 将毫秒数转换成日期
     }
 
     public static String  getWeekMondayByDate(String time) {
@@ -45,17 +56,13 @@ public class WeekToDateUtil {
         if (1 == dayWeek) {
             cal.add(Calendar.DAY_OF_MONTH, -1);
         }
-  /*      System.out.println("要计算日期为:" + sdf.format(cal.getTime())); // 输出要计算日期*/
         cal.setFirstDayOfWeek(Calendar.MONDAY);// 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
         int day = cal.get(Calendar.DAY_OF_WEEK);// 获得当前日期是一个星期的第几天
         cal.add(Calendar.DATE, cal.getFirstDayOfWeek() - day);// 根据日历的规则，给当前日期减去星期几与一个星期第一天的差值
         String imptimeBegin = sdf.format(cal.getTime());
-        System.out.println("所在周星期一的日期：" + imptimeBegin);
         cal.add(Calendar.DATE, 2);
         cal.add(Calendar.DATE, 2);
-        String imptimeEnd = sdf.format(cal.getTime());
-        System.out.println("所在周星期五的日期：" + imptimeEnd);
-        return imptimeEnd;
+        return imptimeBegin;
 
     }
     public static String getWeekFirDayByDate(String time) {
@@ -71,14 +78,12 @@ public class WeekToDateUtil {
         if (1 == dayWeek) {
             cal.add(Calendar.DAY_OF_MONTH, -1);
         }
-        /*System.out.println("要计算日期为:" + sdf.format(cal.getTime())); // 输出要计算日期*/
         cal.setFirstDayOfWeek(Calendar.MONDAY);// 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
         int day = cal.get(Calendar.DAY_OF_WEEK);// 获得当前日期是一个星期的第几天
         cal.add(Calendar.DATE, cal.getFirstDayOfWeek() - day);// 根据日历的规则，给当前日期减去星期几与一个星期第一天的差值
         cal.add(Calendar.DATE, 2);
         cal.add(Calendar.DATE, 2);
         String imptimeEnd = sdf.format(cal.getTime());
-        System.out.println("所在周星期五的日期：" + imptimeEnd);
         return imptimeEnd;
 
     }

@@ -4,6 +4,7 @@ import com.cxs.extension.ath.mapper.CourseMapper;
 import com.cxs.extension.ath.mapper.TermMapper;
 import com.cxs.extension.ath.result.CourseResult;
 import com.cxs.extension.ath.service.api.CourseService;
+import com.cxs.extension.sys.service.api.DictItemService;
 import com.cxs.framework.utils.MondayAndFridayUtil;
 import com.cxs.framework.dto.ResultDo;
 import com.cxs.framework.result.InterfaceResult;
@@ -26,6 +27,9 @@ public class CourseServiceImpl implements CourseService {
 
     @Autowired
     private TermMapper termMapper;
+
+    @Autowired
+    private DictItemService dictItemService;
 
     private static final String WEEK = "week";
 
@@ -79,6 +83,7 @@ public class CourseServiceImpl implements CourseService {
             logger.info(CourseResult.FIND_NOT_NULL.getValue());
         }
         resultMap.put("courseList", courseList);
+        //resultMap.put("courseStateList", dictItemService.findByTypeCode("RECORD_STATE").getResultData());
         resultDo.setResultData(resultMap);
         return resultDo;
     }

@@ -18,6 +18,8 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+
+
     @RequestMapping("findCourseList")
     @NoAuth
     @ResponseBody
@@ -25,14 +27,14 @@ public class CourseController {
         return courseService.findCourseListByTime(classId, startTime, endTime);
     }
 
-    @RequestMapping("/findWeekCourse")
+    @RequestMapping("/findWeekCourseByClassId")
     @NoAuth
     @ResponseBody
     public ResultDo<Map<String, Object>> findCourseListByClassId(@RequestParam(value = "classId", required = true) String classId) {
         return courseService.findCourseListByClassId(classId);
     }
 
-    @RequestMapping("/findWeekCourse")
+    @RequestMapping("/findWeekCourseByWeek")
     @NoAuth
     @ResponseBody
     public ResultDo<Map<String, Object>> findCourseListByWeek(@RequestParam(value = "classId", required = true) String classId, @RequestParam(value = "currentWeek", required = true) Integer currentWeek) {

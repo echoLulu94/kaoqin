@@ -18,23 +18,10 @@ public interface CourseMapper extends CoreMapper<Course> {
      */
 
 
-    @Select("Select  c.class_id as classId, c.course_name as courseName,c.course_order as courseOrder,r.record_state as recordState,c.course_time as courseTime " +
+    @Select("Select  c.class_id as classId, c.course_name as courseName,c.course_order as courseOrder,c.course_location as courseLocation,r.record_state as recordState,c.course_time as courseTime " +
             "from ath_course c inner join  ath_record r on r.id=c.record_id " +
             "where c.class_id= #{classId} and c.course_time between #{startTime} and #{endTime}" )
     List<Course> findCourseDetail(@Param("classId") String classId , @Param("startTime") String  startTime, @Param("endTime")String endTime);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
