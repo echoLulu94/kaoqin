@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="yomno-ykq:war">
+    <output-path>$PROJECT_DIR$/../yomno-ykq/target</output-path>
+    <root id="archive" name="yomnoykq.war">
+      <element id="artifact" artifact-name="yomno-ykq:war exploded" />
+    </root>
+  </artifact>
+</component>
