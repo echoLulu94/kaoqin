@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta name="rendener" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>宇牧云考勤</title>
+    <meta name="keywords" content="宇牧,云考勤" />
+    <link rel="stylesheet" href="${portal}/css/index.css">
+    <script src="${plugins}/jQuery/jquery.1.9.1.min.js"></script>
+</head>
+<body>
+sss
+</body>
+</html>

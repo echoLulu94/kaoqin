@@ -2445,7 +2445,6 @@ CREATE TABLE `ath_role_resc` (
   `resc_code` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '资源code'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
 
-
 -- ----------------------------
 -- Table structure for `ath_user_role`
 -- ----------------------------
@@ -2468,8 +2467,8 @@ CREATE TABLE `mak_activity` (
   `introduction` text COLLATE utf8_bin COMMENT '活动简介',
   `sponsor` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '主办方',
   `sign_up_deadline` bigint(20) DEFAULT NULL COMMENT '报名截止时间',
-  `start_time` bigint(20) DEFAULT NULL COMMENT '活动开始时间',
-  `end_time` bigint(20) DEFAULT NULL COMMENT '活动结束时间',
+  `start_time` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '活动开始时间',
+  `end_time` varchar(40) COLLATE utf8_bin DEFAULT NULL COMMENT '活动结束时间',
   `act_type` varchar(2) COLLATE utf8_bin DEFAULT NULL COMMENT '活动类型',
   `platform` varchar(1) COLLATE utf8_bin DEFAULT NULL COMMENT '所属平台：0-内部；1-外部；',
   `meet_area` text COLLATE utf8_bin COMMENT '会场区域：10-A区；11-B区；12-C区；13-D区；14-E区；',
@@ -2491,9 +2490,12 @@ CREATE TABLE `mak_activity` (
 -- ----------------------------
 -- Records of mak_activity
 -- ----------------------------
-INSERT INTO `mak_activity` VALUES ('077785aa95bc43a0a2aecd6931b015da', '718e291870e34db782bdbc597c8e1ac4', '测试活动','西门吹雪', 0xE7AE80E4BB8BEFBC8CE7AE80E4BB8B6169, '', null, '1504627200000', '1506614340000', '', '0', 0x7B7D, '南京', null, null, '', null, null, 0x687474703A2F2F7777772E62616964752E636F6D, '3', '1506742079166', null, '1506742079166', null);
-INSERT INTO `mak_activity` VALUES ('e24128d3273a47d1a18937ef0e391601', '5de9e8a981384a00a4b2b7ade5970544', '测试001','上官', '', '', null, '1504886400000', '1504972740000', '', '1', 0x7B7D, '', null, null, '', '', null, '',  '2', '1506740789772', null, '1506743941327', null);
+DELETE FROM `mak_activity`;
+INSERT INTO `mak_activity` ( `id` , `user_id` , `title` , `worker_man` , `introduction` , `sponsor` , `sign_up_deadline`,  `start_time` , `end_time` , `act_type` , `platform` , `meet_area` , `place` , `participant_count` , `participant_remain_count` , `cust_phone` , `is_notice` , `sign_up_fee` , `activity_url` , `state` , `create_time` , `create_by` , `update_time` ,`update_by`)VALUES
+  ('077785aa95bc43a0a2aecd6931b015da','admin1','第一届大学生生存现状讨论会','西门吹雪',NULL,NULL,NULL ,'20151123133000',NULL,'0',NULL,NULL,NULL,30,20,'18523144455','0',NULL,NULL,'1',NULL,NULL,NULL,NULL ),
 
+INSERT INTO `mak_activity` VALUES ('077785aa95bc43a0a2aecd6931b015da', 'admin1', '测试活动','西门吹雪', 0xE7AE80E4BB8BEFBC8CE7AE80E4BB8B6169, '', null, '1504627200000', '1506614340000', '', '0', 0x7B7D, '南京', null, null, '', null, null, 0x687474703A2F2F7777772E62616964752E636F6D, '3', '1506742079166', null, '1506742079166', null);
+INSERT INTO `mak_activity` VALUES ('e24128d3273a47d1a18937ef0e391601', '5de9e8a981384a00a4b2b7ade5970544', '测试001','上官', '', '', null, '1504886400000', '1504972740000', '', '1', 0x7B7D, '', null, null, '', '', null, '',  '2', '1506740789772', null, '1506743941327', null);
 
 DROP TABLE IF EXISTS `ath_news`;
 CREATE TABLE `ath_news` (

@@ -211,15 +211,16 @@ public class UserServiceImpl implements UserService {
     }
 	@Override
 	public UserDto findOneById(String id) {
-
-		UserDto userDto=new UserDto();
-		if(id!=null&&!"".equals(id)){
-			User  userTmp=this.userMapper.findOneById(id);
-			if(null!=userTmp){
-				UserParseUtil.parseToDto(userTmp,userDto);
-			}
+		User userTmp = new User();
+		userTmp.setId(id);
+		User user = this.userMapper.selectOne(userTmp);
+		UserDto userDto = new UserDto();
+		if(null!=user){
+			UserParseUtil.parseToDto(user, userDto);
+			return userDto;
+		}else{
+			return null;
 		}
-		return userDto;
 	}
 
 
